@@ -16,6 +16,31 @@ public class EmpleadosDAO {
    ResultSet rs;
    int resp;
    
+   public Empleados Validar(String nombresEmpleado, String telefonoContacto){
+       
+        Empleados empleados = new Empleados();
+        
+        String sql = "select *  from empleados where nombresEmpleado = ? and telefonoContacto = ?";
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, nombresEmpleado);
+            ps.setString(2, telefonoContacto);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                empleados.setCodigoEmpleado(rs.getInt("codigoEmpleado"));
+                empleados.setApellidosEmpleado(rs.getString("apellidosEmpleado"));
+                empleados.setNombresEmpleado(rs.getString("nombresEmpleado"));
+                empleados.setTelefonoContacto(rs.getString("telefonoContacto"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        
+        return empleados; 
+    }
+   
    //METODO LISTAR
    public List listar(){
        String sql = "select * from Empleados";
