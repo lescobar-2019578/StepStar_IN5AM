@@ -33,7 +33,8 @@ public class ProductosDAO {
                pro.setTalla(rs.getInt(6));
                pro.setCantidad(rs.getInt(7));
                pro.setCodigoProveedor(rs.getInt(8));
-               pro.setCodigoCategoria(9);
+               pro.setCodigoCategoria(rs.getInt(9));
+               listaProductos.add(pro);
            }
        } catch (Exception e) {
            e.printStackTrace();
@@ -87,7 +88,7 @@ public class ProductosDAO {
        
        //Metodo Editar
        public int actualizar(Productos pro){
-           String sql = "update Productos set nombreProducto = ?, descripcion = ?, marca = ?, precio = ?, talla = ?, cantidad = ?," + "where codigoEmpleado = ?";
+           String sql = "update Productos set nombreProducto = ?, descripcion = ?, marca = ?, precio = ?, talla = ?, cantidad = ?," + "where codigoProducto = ?";
            try {
                con = cn.Conexion();
                ps = con.prepareStatement(sql);
