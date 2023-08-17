@@ -9,7 +9,7 @@ public class Conexion {
    public Connection Conexion(){
        try{
            Class.forName("com.mysql.jdbc.Driver");
-           conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/DBStepStarIN5AM?useSSL=false", "kinal", "admin");
+           conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/DBStepStarIN5AM?useSSL=false", "Axel", "root");
        }catch(Exception e){
            e.printStackTrace();
        }

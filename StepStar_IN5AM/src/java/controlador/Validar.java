@@ -78,7 +78,7 @@ public class Validar extends HttpServlet {
            String pass = request.getParameter("txtPass");
            empleado = empleadoDao.Validar(user, pass);
            if(empleado.getNombresEmpleado()!= null){
-               request.setAttribute("nombresEmpleado", empleado);
+               request.setAttribute("usuario", empleado);
                request.getRequestDispatcher("Controlador?menu=Principal").forward(request, response);
            }else{
                request.getRequestDispatcher("index.jsp").forward(request, response);
