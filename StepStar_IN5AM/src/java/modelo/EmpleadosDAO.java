@@ -20,7 +20,7 @@ public class EmpleadosDAO {
        
         Empleados empleados = new Empleados();
         
-        String sql = "select *  from empleados where nombresEmpleado = ? and telefonoContacto = ?";
+        String sql = "select *  from empleados where nombresEmpleado = ? and DPI = ?";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -29,6 +29,7 @@ public class EmpleadosDAO {
             rs = ps.executeQuery();
             while(rs.next()){
                 empleados.setCodigoEmpleado(rs.getInt("codigoEmpleado"));
+                empleados.setDPI(rs.getString("DPI"));
                 empleados.setApellidosEmpleado(rs.getString("apellidosEmpleado"));
                 empleados.setNombresEmpleado(rs.getString("nombresEmpleado"));
                 empleados.setTelefonoContacto(rs.getString("telefonoContacto"));
@@ -52,11 +53,13 @@ public class EmpleadosDAO {
            while(rs.next()){
                Empleados em = new Empleados();
                em.setCodigoEmpleado(rs.getInt(1));
-               em.setApellidosEmpleado(rs.getString(2));
-               em.setNombresEmpleado(rs.getString(3));
-               em.setDireccionEmpleado(rs.getString(4));
-               em.setTelefonoContacto(rs.getString(5));
-               em.setCodigoTipoEmpleado(rs.getInt(6));
+               em.setDPI(rs.getString(2));
+               em.setApellidosEmpleado(rs.getString(3));
+               em.setNombresEmpleado(rs.getString(4));
+               em.setDireccionEmpleado(rs.getString(5));
+               em.setTelefonoContacto(rs.getString(6));
+               em.setCodigoTipoEmpleado(rs.getInt(7));
+               listaEmpleados.add(em);
            }
        }catch(Exception e){
            e.printStackTrace();
@@ -71,11 +74,13 @@ public class EmpleadosDAO {
        try{
            con = cn.Conexion();
            ps = con.prepareStatement(sql);
-           ps.setString(1, em.getApellidosEmpleado());
-           ps.setString(2, em.getNombresEmpleado());
-           ps.setString(3, em.getDireccionEmpleado());
-           ps.setString(4, em.getTelefonoContacto());
-           ps.setInt(5, em.getCodigoTipoEmpleado());
+           
+           ps.setString(1, em.getDPI());
+           ps.setString(2, em.getApellidosEmpleado());
+           ps.setString(3, em.getNombresEmpleado());
+           ps.setString(4, em.getDireccionEmpleado());
+           ps.setString(5, em.getTelefonoContacto());
+           ps.setInt(6, em.getCodigoTipoEmpleado());
            ps.executeUpdate();
        } catch (Exception e) {
            e.printStackTrace();
@@ -93,11 +98,12 @@ public class EmpleadosDAO {
            ps = con.prepareStatement(sql);
            rs = ps.executeQuery();
            while(rs.next()){
-               em.setApellidosEmpleado(rs.getString(2));
-               em.setNombresEmpleado(rs.getString(3));
-               em.setDireccionEmpleado(rs.getString(4));
-               em.setTelefonoContacto(rs.getString(5));
-               em.setCodigoTipoEmpleado(rs.getInt(6));
+               em.setDPI(rs.getString(2));
+               em.setApellidosEmpleado(rs.getString(3));
+               em.setNombresEmpleado(rs.getString(4));
+               em.setDireccionEmpleado(rs.getString(5));
+               em.setTelefonoContacto(rs.getString(6));
+               em.setCodigoTipoEmpleado(rs.getInt(7));
            }
        }catch(Exception e){
            e.printStackTrace();
@@ -108,14 +114,15 @@ public class EmpleadosDAO {
   
    //METODO EDITAR
    public int actualizar(Empleados em){
-       String sql = "update Empleados set apellidosEmpleado = ?, nombresEmpleado = ?, direccionEmpleado = ?, telefonoContacto = ?" + "where codigoEmpleado = ?";
+       String sql = "update Empleados set DPI = ?, apellidosEmpleado = ?, nombresEmpleado = ?, direccionEmpleado = ?, telefonoContacto = ?" + "where codigoEmpleado = ?";
        try{
           con = cn.Conexion();
           ps = con.prepareStatement(sql);
-          ps.setString(1, em.getApellidosEmpleado());
-          ps.setString(2, em.getNombresEmpleado());
-          ps.setString(3, em.getDireccionEmpleado());
-          ps.setString(4, em.getTelefonoContacto());
+          ps.setString(1, em.getDPI());
+          ps.setString(2, em.getApellidosEmpleado());
+          ps.setString(3, em.getNombresEmpleado());
+          ps.setString(4, em.getDireccionEmpleado());
+          ps.setString(5, em.getTelefonoContacto());
           ps.executeUpdate();
        }catch(Exception e){
            e.printStackTrace();
