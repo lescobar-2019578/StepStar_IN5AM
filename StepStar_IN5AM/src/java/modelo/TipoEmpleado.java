@@ -1,68 +1,61 @@
-package Modelo;
-
+package modelo;
 
 public class TipoEmpleado {
-    private int codigiTipoEmpleado;
-    private String descripcion;
-    private Double sueldo;
-    private Double bonificacion;
-    private String categoria;
-    
-    // Constructor Vacio 
-    public TipoEmpleado(){
-        
+    private int codigoTipoEmpleado;
+    private String descTipoEmpleado;
+    private int sueldo;
+    private int bonificacion;
+    private String categoriaEmpleado;
+
+    public TipoEmpleado() {
+
     }
-    
-    //Contructor Llleno
-    public TipoEmpleado(int codigoTipoEmpleado,String descripcion, Double sueldo,Double bonificacion,String categoria){
-        this.codigiTipoEmpleado = codigoTipoEmpleado;
-        this.descripcion = descripcion;
+
+    public TipoEmpleado(int codigoTipoEmpleado, String descTipoEmpleado, int sueldo, int bonificacion, String categoriaEmpleado) {
+        this.codigoTipoEmpleado = codigoTipoEmpleado;
+        this.descTipoEmpleado = descTipoEmpleado;
         this.sueldo = sueldo;
         this.bonificacion = bonificacion;
-        this.categoria = categoria;
+        this.categoriaEmpleado = categoriaEmpleado;
     }
 
-    public int getCodigiTipoEmpleado() {
-        return codigiTipoEmpleado;
+    public int getCodigoTipoEmpleado() {
+        return codigoTipoEmpleado;
     }
 
-    public void setCodigiTipoEmpleado(int codigiTipoEmpleado) {
-        this.codigiTipoEmpleado = codigiTipoEmpleado;
+    public void setCodigoTipoEmpleado(int codigoTipoEmpleado) {
+        this.codigoTipoEmpleado = codigoTipoEmpleado;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getDescTipoEmpleado() {
+        return descTipoEmpleado;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDescTipoEmpleado(String descTipoEmpleado) {
+        this.descTipoEmpleado = descTipoEmpleado;
     }
 
-    public Double getSueldo() {
+    public int getSueldo() {
         return sueldo;
     }
 
-    public void setSueldo(Double sueldo) {
+    public void setSueldo(int sueldo) {
         this.sueldo = sueldo;
     }
 
-    public Double getBonificacion() {
+    public int getBonificacion() {
         return bonificacion;
     }
 
-    public void setBonificacion(Double bonificacion) {
+    public void setBonificacion(int bonificacion) {
         this.bonificacion = bonificacion;
     }
 
-    public String getCategoria() {
-        return categoria;
+    public String getCategoriaEmpleado() {
+        return categoriaEmpleado;
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
+    public void setCategoriaEmpleado(String categoriaEmpleado) {
+        this.categoriaEmpleado = categoriaEmpleado;
     }
-    
-    
-    
-    
 }

@@ -5,6 +5,7 @@
  */
 package controlador;
 
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -20,10 +21,16 @@ import modelo.Compra;
 import modelo.CompraDAO;
 import modelo.DetalleCompra;
 import modelo.DetalleCompraDAO;
+import modelo.DetalleVenta;
+import modelo.DetalleVentaDAO;
 import modelo.Empleados;
 import modelo.EmpleadosDAO;
 import modelo.Productos;
 import modelo.ProductosDAO;
+import modelo.Servicios;
+import modelo.ServiciosDAO;
+import modelo.TipoEmpleado;
+import modelo.TipoEmpleadoDAO;
 import modelo.Ventas;
 import modelo.VentasDAO;
 
@@ -53,7 +60,16 @@ public class Controlador extends HttpServlet {
     Ventas ventas = new Ventas();
     VentasDAO ventasDao = new VentasDAO();
     int codVentas;
-    
+    Servicios servicios = new Servicios();
+    ServiciosDAO serviciosDao = new ServiciosDAO();
+    int codServicio;
+    DetalleVenta detalleVen = new DetalleVenta();
+    DetalleVentaDAO detalleVentaDao = new DetalleVentaDAO();
+    int codDetalleVenta;
+    TipoEmpleado tipoEmpleado = new TipoEmpleado();
+    TipoEmpleadoDAO tipoEmpleadoDao = new TipoEmpleadoDAO();
+    int codTipoEmpleado;
+
     
 
     /**
@@ -138,7 +154,36 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("Ventas.jsp").forward(request, response);
             
         
-        } 
+        }else if(menu.equals("Servicios")){
+                switch(accion){
+                    case "Listar":
+                        List listaServicios = serviciosDao.listar();
+                        request.setAttribute("servicio", listaServicios);
+                        break;
+                        
+                }
+                request.getRequestDispatcher("Servicio.jsp").forward(request, response);
+                
+                
+            }else if(menu.equals("DetalleVenta")){
+                switch(accion){
+                    case "Listar":
+                        List listaDetalleVenta = detalleVentaDao.listar();
+                        request.setAttribute("detalleVenta", listaDetalleVenta);
+                        break;
+                        
+                }
+                request.getRequestDispatcher("DetalleVenta.jsp").forward(request, response);
+            }else if(menu.equals("TipoEmpleado")){
+                switch(accion){
+                    case "Listar":
+                        List listaTipoEmpleado = tipoEmpleadoDao.listar();
+                        request.setAttribute("tipoEmpleado", listaTipoEmpleado);
+                        break;
+                        
+                }
+                request.getRequestDispatcher("TipoEmpleado.jsp").forward(request, response);
+            } 
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
