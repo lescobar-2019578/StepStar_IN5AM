@@ -19,7 +19,7 @@ public class VentasDAO {
    //Método Listar
    public List listar(){
        String sql = "select * from Venta";
-       List<Ventas> listaVentas = new ArrayList<Ventas>();
+       List<Ventas> listaVentas = new ArrayList<>();
        try{
            con = cn.Conexion();
            ps = con.prepareStatement(sql);
@@ -32,6 +32,7 @@ public class VentasDAO {
                ven.setCantidad(rs.getInt(4));
                ven.setDireccionEnvio(rs.getString(5));
                ven.setCodigoServicio(rs.getInt(6));
+               listaVentas.add(ven);
            }
        }catch(Exception e){
            e.printStackTrace();

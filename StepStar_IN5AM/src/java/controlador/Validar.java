@@ -11,14 +11,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Cliente;
-import modelo.ClienteDAO;
 import modelo.Empleados;
 import modelo.EmpleadosDAO;
-import modelo.Productos;
-import modelo.ProductosDAO;
-import modelo.Ventas;
-import modelo.VentasDAO;
 
 
 public class Validar extends HttpServlet {
@@ -77,8 +71,23 @@ public class Validar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+            String accion = request.getParameter("accion");
+       if(accion.equalsIgnoreCase("Ingresar")){
+           // capturar el usuario y la contraseña JSP
+           String user = request.getParameter("txtUser");
+           String pass = request.getParameter("txtPass");
+           empleado = empleadoDao.Validar(user, pass);
+           if(empleado.getNombresEmpleado()!= null){
+               request.setAttribute("usuario", empleado);
+               request.getRequestDispatcher("Controlador?menu=Principal").forward(request, response);
+           }else{
+               request.getRequestDispatcher("index.jsp").forward(request, response);
+           }
+       }else{
+           request.getRequestDispatcher("index.jsp").forward(request, response);
+       }
     }
+    
 
     /**
      * Returns a short description of the servlet.

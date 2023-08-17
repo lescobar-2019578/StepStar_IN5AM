@@ -42,7 +42,7 @@ public class Categoria {
         this.descripcion = descripcion;
     }
 
-    public boolean isGenero() {
+    public boolean getGenero() {
         return genero;
     }
 
