@@ -3,22 +3,26 @@ package modelo;
 
 public class Empleados {
     private int codigoEmpleado;
+    private String DPI;
     private String apellidosEmpleado;
     private String nombresEmpleado;
     private String direccionEmpleado;
     private String telefonoContacto;
     private int codigoTipoEmpleado;
+    private String usuario;
 
     public Empleados() {
     }
 
-    public Empleados(int codigoEmpleado, String apellidosEmpleado, String nombresEmpleado, String direccionEmpleado, String telefonoContacto, int codigoTipoEmpleado) {
+    public Empleados(int codigoEmpleado, String DPI, String apellidosEmpleado, String nombresEmpleado, String direccionEmpleado, String telefonoContacto, int codigoTipoEmpleado, String usuario) {
         this.codigoEmpleado = codigoEmpleado;
+        this.DPI = DPI;
         this.apellidosEmpleado = apellidosEmpleado;
         this.nombresEmpleado = nombresEmpleado;
         this.direccionEmpleado = direccionEmpleado;
         this.telefonoContacto = telefonoContacto;
         this.codigoTipoEmpleado = codigoTipoEmpleado;
+        this.usuario = usuario;
     }
 
     public int getCodigoEmpleado() {
@@ -28,6 +32,15 @@ public class Empleados {
     public void setCodigoEmpleado(int codigoEmpleado) {
         this.codigoEmpleado = codigoEmpleado;
     }
+
+    public String getDPI() {
+        return DPI;
+    }
+
+    public void setDPI(String DPI) {
+        this.DPI = DPI;
+    }
+    
 
     public String getApellidosEmpleado() {
         return apellidosEmpleado;
@@ -67,6 +80,14 @@ public class Empleados {
 
     public void setCodigoTipoEmpleado(int codigoTipoEmpleado) {
         this.codigoTipoEmpleado = codigoTipoEmpleado;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
     
     
