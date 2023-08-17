@@ -7,16 +7,37 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Compra;
+import modelo.CompraDAO;
+import modelo.DetalleCompra;
+import modelo.DetalleCompraDAO;
+import modelo.Empleados;
+import modelo.EmpleadosDAO;
+import modelo.Productos;
+import modelo.ProductosDAO;
 
 /**
  *
  * @author informatica
  */
 public class Controlador extends HttpServlet {
+    Productos productos = new Productos();
+    ProductosDAO productosDao = new ProductosDAO();
+    int codProducto;
+    Empleados empleado = new Empleados();
+    EmpleadosDAO empleadoDao = new EmpleadosDAO();
+    int codEmpleado;
+    Compra compras = new Compra();
+    CompraDAO compraDao = new CompraDAO();
+    int codCompra;
+    DetalleCompra detalleCompra = new DetalleCompra();
+    DetalleCompraDAO detalleCompraDao = new DetalleCompraDAO();
+    int codDetalleCompra;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,18 +50,47 @@ public class Controlador extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Controlador</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Controlador at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            String menu = request.getParameter("menu");
+            String accion = request.getParameter("accion");
+            if(menu.equals("Principal")){
+                request.getRequestDispatcher("Principal.jsp").forward(request, response);
+            }else if(menu.equals("Productos")){
+                switch(accion){
+                    case "Listar":
+                        List listaProductos = productosDao.listar();
+                        request.setAttribute("producto", listaProductos);
+                        break;
+                        
+                }
+                request.getRequestDispatcher("Producto.jsp").forward(request, response);
+            }else if(menu.equals("Empleados")){
+                switch(accion){
+                    case "Listar":
+                        List listaProductos = empleadoDao.listar();
+                        request.setAttribute("empleado", listaProductos);
+                        break;
+                        
+                }
+                request.getRequestDispatcher("Empleado.jsp").forward(request, response);
+    }
+            else if(menu.equals("Compras")){
+                switch(accion){
+                    case "Listar":
+                        List listaCompras = compraDao.listar();
+                        request.setAttribute("compra", listaCompras);
+                        break;
+                        
+                }
+                request.getRequestDispatcher("Compra.jsp").forward(request, response);
+            }
+            else if (menu.equals("DetalleCompra")) {
+            switch (accion) {
+                case "Listar":
+                    List listaDetalleCompra = detalleCompraDao.listar();
+                    request.setAttribute("detalleCompras", listaDetalleCompra);
+                    break;
+            }
+            request.getRequestDispatcher("DetalleCompra.jsp").forward(request, response);
         }
     }
 
