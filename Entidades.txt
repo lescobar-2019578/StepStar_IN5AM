@@ -1,0 +1,11 @@
+PRODUCTOS - Xitumul
+EMPLEADOS - Zabala
+SERVICIOS - Doren
+VENTAS - Llanel
+DETALLE_COMPRA - Javier
+PROVEEDORES - McLeiva
+COMPRA - Pablito
+DETALLE_VENTA - Leiva
+CATEGORIA - Brener
+CLIENTE - Pitbull
+TIPO_EMPLEADO - Fabricio
