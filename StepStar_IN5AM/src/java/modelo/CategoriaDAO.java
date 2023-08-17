@@ -17,7 +17,7 @@ public class CategoriaDAO {
     // Método para validar una categoría por nombre y código de producto
     public Categoria validarCategoria(String nombreCategoria, int codigoProducto) {
         Categoria categoria = new Categoria();
-        String sql = "SELECT * FROM Categoria WHERE nombreCategoria = ? AND codigoProducto = ?";
+        String sql = "SELECT * FROM Categoria WHERE nombreCategotia = ? AND codigoProducto = ?";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -26,8 +26,8 @@ public class CategoriaDAO {
             rs = ps.executeQuery();
             while (rs.next()) {
                 categoria.setCodigoCategoria(rs.getInt("codigoCategoria"));
-                categoria.setNombreCategoria(rs.getString("nombreCategoria"));
-                categoria.setDescripcion(rs.getString("descripcion"));
+                categoria.setNombreCategoria(rs.getString("nombreCategotia"));
+                categoria.setDescripcion(rs.getString("descCategoria"));
                 categoria.setGenero(rs.getBoolean("genero"));
                 categoria.setCodigoProducto(rs.getInt("codigoProducto"));
             }
@@ -38,7 +38,7 @@ public class CategoriaDAO {
     }
 
     // Método para listar todas las categorías
-    public List<Categoria> listarCategorias() {
+    public List listar() {
         String sql = "SELECT * FROM Categoria";
         List<Categoria> listaCategorias = new ArrayList<>();
         try {
@@ -48,8 +48,8 @@ public class CategoriaDAO {
             while (rs.next()) {
                 Categoria categoria = new Categoria();
                 categoria.setCodigoCategoria(rs.getInt("codigoCategoria"));
-                categoria.setNombreCategoria(rs.getString("nombreCategoria"));
-                categoria.setDescripcion(rs.getString("descripcion"));
+                categoria.setNombreCategoria(rs.getString("nombreCategotia"));
+                categoria.setDescripcion(rs.getString("descCategoria"));
                 categoria.setGenero(rs.getBoolean("genero"));
                 categoria.setCodigoProducto(rs.getInt("codigoProducto"));
                 listaCategorias.add(categoria);
@@ -62,13 +62,13 @@ public class CategoriaDAO {
 
     // Método para agregar una nueva categoría
     public int agregarCategoria(Categoria categoria) {
-        String sql = "INSERT INTO Categoria (nombreCategoria, descripcion, genero, codigoProducto) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO Categoria (nombreCategotia, descCategoria, genero, codigoProducto) VALUES (?, ?, ?, ?)";
         try {
             con = cn.Conexion();
             ps = con.prepareCall(sql);
             ps.setString(1, categoria.getNombreCategoria());
             ps.setString(2, categoria.getDescripcion());
-            ps.setBoolean(3, categoria.isGenero());
+            ps.setBoolean(3, categoria.getGenero());
             ps.setInt(4, categoria.getCodigoProducto());
             ps.executeUpdate();
         } catch (Exception e) {
@@ -88,8 +88,8 @@ public class CategoriaDAO {
             rs = ps.executeQuery();
             while (rs.next()) {
                 categoria.setCodigoCategoria(rs.getInt("codigoCategoria"));
-                categoria.setNombreCategoria(rs.getString("nombreCategoria"));
-                categoria.setDescripcion(rs.getString("descripcion"));
+                categoria.setNombreCategoria(rs.getString("nombreCategotia"));
+                categoria.setDescripcion(rs.getString("descCategoria"));
                 categoria.setGenero(rs.getBoolean("genero"));
                 categoria.setCodigoProducto(rs.getInt("codigoProducto"));
             }
@@ -101,13 +101,13 @@ public class CategoriaDAO {
 
     // Método para actualizar una categoría
     public int actualizarCategoria(Categoria categoria) {
-        String sql = "UPDATE Categoria SET nombreCategoria = ?, descripcion = ?, genero = ?, codigoProducto = ? WHERE codigoCategoria = ?";
+        String sql = "UPDATE Categoria SET nombreCategotia = ?, descCategoria = ?, genero = ?, codigoProducto = ? WHERE codigoCategoria = ?";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setString(1, categoria.getNombreCategoria());
             ps.setString(2, categoria.getDescripcion());
-            ps.setBoolean(3, categoria.isGenero());
+            ps.setBoolean(3, categoria.getGenero());
             ps.setInt(4, categoria.getCodigoProducto());
             ps.setInt(5, categoria.getCodigoCategoria());
             ps.executeUpdate();
