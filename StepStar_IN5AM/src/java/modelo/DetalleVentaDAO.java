@@ -29,6 +29,7 @@ public class DetalleVentaDAO {
                detalleVen.setCodigoCliente(rs.getInt(2));
                detalleVen.setCodigoVenta(rs.getInt(3));
                detalleVen.setCodigoProducto(rs.getInt(4));
+               listaDetalleVenta.add(detalleVen);
            }
        }catch(Exception e){
            e.printStackTrace();

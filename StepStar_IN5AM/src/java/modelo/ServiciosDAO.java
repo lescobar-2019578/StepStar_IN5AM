@@ -37,6 +37,7 @@ public class ServiciosDAO {
                sv.setLugarServicio(rs.getString(5));
                sv.setTelefonoServicio(rs.getString(6));
                sv.setCodigoEmpleado(rs.getInt(7));
+               listaServicios.add(sv);
            }
        }catch(Exception e){
            e.printStackTrace();
