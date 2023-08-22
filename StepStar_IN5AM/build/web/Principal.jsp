@@ -31,7 +31,7 @@
                     <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Categoria&accion=Listar" target="myFrame">Categoría</a>
                 </li>
                 <li class="nav-item" style="padding-top: 28px;">
-                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="#">Proveedores</a>
+                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Proveedor&accion=Listar" target="myFrame">Proveedores</a>
                 </li>
                 <li class="nav-item" style="padding-top: 28px;">
                     <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Productos&accion=Listar" target="myFrame">Productos</a>
@@ -53,6 +53,9 @@
                 </li>
                 <li class="nav-item" style="padding-top: 28px;">
                     <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=DetalleVenta&accion=Listar" target="myFrame">Detalle Venta</a>
+                </li>
+                <li class="nav-item" style="padding-top: 28px;">
+                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=TipoEmpleado&accion=Listar" target="myFrame">Tipo Empleado</a>
                 </li>
             </ul>
         </div>

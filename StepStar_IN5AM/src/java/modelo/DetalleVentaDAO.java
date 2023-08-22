@@ -38,7 +38,7 @@ public class DetalleVentaDAO {
    }
    
    //Método Agregar
-   public int agregar(DetalleVenta detalleVen) throws SQLException{
+   public int agregar(DetalleVenta detalleVen){
        String sql = "insert into DetalleVenta(codigoCliente, codigoVenta, codigoProducto)\n" +
 "	values (?, ?, ?);";
        try{

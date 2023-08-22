@@ -1,4 +1,4 @@
-<%-- 
+ <%-- 
     Document   : Empleado
     Created on : 16/08/2023, 09:47:49 AM
     Author     : diego
@@ -9,6 +9,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <style>
@@ -22,32 +23,32 @@
     </head>
     <body>
         <div class="d-flex">
-            <div style="background-color:#1E3E59" class="card colo-sm-3">
+            <div style="background-color:#1E3E59" class="card colo-sm-4">
                 <div style="background-color:#1E3E59" class="card-body">
-                    <form action="Controlador?menu=Empleado" method="POST">
+                    <form action="Controlador?menu=Empleados" method="POST">
                         <div class="form-group">
                             <label style="color: #f2f2f2">DPI:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${empleado.getDPI()}" name="txtDPIEmpleado" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Apellido Empleado:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${empleado.getApellidosEmpleado()}" name="txtApellidoEmpleado" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Nombre Empleado:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${empleado.getNombresEmpleado()}" name="txtNombreEmpleado" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Direccion:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${empleado.getDireccionEmpleado()}" name="txtDireccionEmpleado" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Telefono:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${empleado.getTelefonoContacto()}" name="txtTelefonoEmpleado" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label style="color: #f2f2f2">Codigo TipoEmpleado</label>
-                            <input type="text" name="" class="form-control">
+                            <label style="color: #f2f2f2">Codigo TipoEmpleado:</label>
+                            <input type="number" value="${empleado.getCodigoTipoEmpleado()}" name="txtCodigoTipoEmpleado" class="form-control">
                         </div>
                         
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
@@ -70,18 +71,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="empleado" items="${empleado}">
+                        <c:forEach var="empleado" items="${empleados}">
                             <tr>
-                                <td>${empleado.getDPI()}</td>
                                 <td>${empleado.getCodigoEmpleado()}</td>
+                                <td>${empleado.getDPI()}</td>
                                 <td>${empleado.getApellidosEmpleado()}</td>
                                 <td>${empleado.getNombresEmpleado()}</td>
                                 <td>${empleado.getDireccionEmpleado()}</td>
                                 <td>${empleado.getTelefonoContacto()}</td>
                                 <td>${empleado.getCodigoTipoEmpleado()}</td>
                                 <td>
-                                    <a class="btn btn-warning" href="">Editar</a>
-                                    <a class="btn btn-danger" href="">Eliminar</a>
+                                    <a class="btn btn-warning" href="Controlador?menu=Empleados&accion=Editar&codigoEmpleado=${empleado.getCodigoEmpleado()}">Editar</a>
+                                    <a class="btn btn-danger" href="Controlador?menu=Empleados&accion=Eliminar&codigoEmpleado=${empleado.getCodigoEmpleado()}">Eliminar</a>
                                 </td>
                             </tr>
                         </c:forEach>

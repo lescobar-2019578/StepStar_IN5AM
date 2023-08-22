@@ -24,21 +24,20 @@
         <div class="d-flex">
             <div style="background-color:#1E3E59" class="card colo-sm-3">
                 <div style="background-color:#1E3E59" class="card-body">
-                    <form action="Controlador?menu=Producto" method="POST">
+                    <form action="Controlador?menu=DetalleVenta" method="POST">
                         <div class="form-group">
                             <label style="color: #f2f2f2">Codigo Cliente:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${detalleVen.getCodigoCliente}" name="txtCodigoCliente" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Codigo Venta:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${detalleVen.getCodigoVenta}" name="txtCodigoVenta" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Codigo Producto:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${detalleVen.getCodigoProducto}" name="txtCodigoProducto" class="form-control">
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
-                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                     </form>
                 </div>
             </div>
@@ -61,8 +60,7 @@
                                 <td>${detalleVenta.getCodigoVenta()}</td>
                                 <td>${detalleVenta.getCodigoProducto()}</td>
                                 <td>
-                                    <a class="btn btn-warning" href="">Editar</a>
-                                    <a class="btn btn-danger" href="">Eliminar</a>
+                                    <a class="btn btn-danger" href="Controlador?menu=DetalleVenta&accion=Eliminar&codigoDetalleVenta=${detalleVenta.getCodigoDetalleVenta()}">Eliminar</a>
                                 </td>
                             </tr>
                         </c:forEach>

@@ -1,3 +1,4 @@
+package modelo;
 
 import config.Conexion;
 import java.sql.Connection;
@@ -6,29 +7,20 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author informatica
- */
 public class ProveedoresDAO {
-    Conexion cn = new Conexion();
-    Connection con;
-    PreparedStatement ps; 
-    ResultSet rs;
-    int resp;
+   Conexion cn = new Conexion();
+   Connection con;
+   PreparedStatement ps;
+   ResultSet rs;
+   int resp;
     
     public List listar(){
-        String sql = "Select * from Proveedor";
+        String sql = "Select * from Proveedores";
         List<Proveedor> listaProveedor = new ArrayList<>();
         try {
             con = cn.Conexion();
-            ps= con.prepareStatement(sql);
+            ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
                 Proveedor pr = new Proveedor();

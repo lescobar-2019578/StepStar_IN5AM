@@ -1,9 +1,8 @@
 <%-- 
-    Document   : DetalleVenta
-    Created on : 16-ago-2023, 22:38:33
-    Author     : Gamer
+    Document   : TipoEmpleado
+    Created on : 16/08/2023, 08:49:49 PM
+    Author     : lisan
 --%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,26 +17,31 @@
                 background-repeat: no-repeat;
             }
         </style>
-        <title>Pagina Detalle Venta</title>
+        <title>Pagina Producto</title>
     </head>
     <body>
         <div class="d-flex">
             <div style="background-color:#1E3E59" class="card colo-sm-3">
                 <div style="background-color:#1E3E59" class="card-body">
-                    <form action="Controlador?menu=DetalleVenta" method="POST">
+                    <form action="Controlador?menu=TipoEmpleado" method="POST">
                         <div class="form-group">
-                            <label style="color: #f2f2f2">Codigo Cliente:</label>
-                            <input type="text" value="${detalleVen.getCodigoCliente}" name="txtCodigoCliente" class="form-control">
+                            <label style="color: #f2f2f2">Descripcion:</label>
+                            <input type="text" name="" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label style="color: #f2f2f2">Codigo Venta:</label>
-                            <input type="text" value="${detalleVen.getCodigoVenta}" name="txtCodigoVenta" class="form-control">
+                            <label style="color: #f2f2f2">Sueldo:</label>
+                            <input type="text" name="" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label style="color: #f2f2f2">Codigo Producto:</label>
-                            <input type="text" value="${detalleVen.getCodigoProducto}" name="txtCodigoProducto" class="form-control">
+                            <label style="color: #f2f2f2">Bonificacion:</label>
+                            <input type="text" name="" class="form-control">
                         </div>
+                        <div class="form-group">
+                            <label style="color: #f2f2f2">Categoria:</label>
+                            <input type="text" name="" class="form-control">
+                        </div>                
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
+                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                     </form>
                 </div>
             </div>
@@ -45,22 +49,24 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <td style="color:#0D0D0D"><strong>CODIGO DETALLE</strong></td>
-                            <td style="color:#0D0D0D"><strong>CODIGO CLIENTE</strong></td>
-                            <td style="color:#0D0D0D"><strong>CODIGO VENTA</strong></td>
-                            <td style="color:#0D0D0D"><strong>CODIGO PRODUCTO</strong></td>
+                            <td style="color:#0D0D0D"><strong>DESCRIPCION</strong></td>
+                            <td style="color:#0D0D0D"><strong>SUELDO</strong></td>
+                            <td style="color:#0D0D0D"><strong>BONIFICACION</strong></td>
+                            <td style="color:#0D0D0D"><strong>CATEGORIA</strong></td>
                             <td style="color:#0D0D0D"><strong>ACCIONES</strong></td>
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="detalleVenta" items="${detalleVenta}">
+                        <c:forEach var="tipoEmpleado" items="${tipoEmpleado}">
                             <tr>
-                                <td>${detalleVenta.getCodigoDetalleVenta()}</td>
-                                <td>${detalleVenta.getCodigoCliente()}</td>
-                                <td>${detalleVenta.getCodigoVenta()}</td>
-                                <td>${detalleVenta.getCodigoProducto()}</td>
+                                <td>${tipoEmpleado.getCodigoTipoEmpleado()}</td>
+                                <td>${tipoEmpleado.getDescTipoEmpleado()}</td>
+                                <td>${tipoEmpleado.getSueldo()}</td>
+                                <td>${tipoEmpleado.getBonificacion()}</td>
+                                <td>${tipoEmpleado.getCategoriaEmpleado()}</td>
                                 <td>
-                                    <a class="btn btn-danger" href="Controlador?menu=DetalleVenta&accion=Eliminar&codigoDetalleVenta=${detalleVenta.getCodigoDetalleVenta()}">Eliminar</a>
+                                    <a class="btn btn-warning" href="">Editar</a>
+                                    <a class="btn btn-danger" href="">Eliminar</a>
                                 </td>
                             </tr>
                         </c:forEach>
