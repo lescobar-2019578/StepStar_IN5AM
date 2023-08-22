@@ -16,7 +16,7 @@ public class CompraDAO {
     int resp;
     
     // Método Listar
-    public List Listar(){
+    public List listar(){
         String sql = "Select * from Compra";
         List<Compra> listaCompras = new ArrayList<Compra>();
         try{
@@ -27,9 +27,10 @@ public class CompraDAO {
                 Compra com = new Compra();
                 com.setCodigoCompra(rs.getInt(1));
                 com.setFechaCompra(rs.getString(2));
-                com.setDescripcion(rs.getString(3));
+                com.setDescripcionCompra(rs.getString(3));
                 com.setCantidad(rs.getDouble(4));
                 com.setCodigoProducto(rs.getInt(5));
+                listaCompras.add(com);
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -45,7 +46,7 @@ public class CompraDAO {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setString(1, com.getFechaCompra());
-            ps.setString(2, com.getDescripcion());
+            ps.setString(2, com.getDescripcionCompra());
             ps.setDouble(3, com.getCantidad());
             ps.setInt(4, com.getCodigoProducto());
             ps.executeUpdate();
@@ -66,7 +67,7 @@ public class CompraDAO {
             rs = ps.executeQuery();
             while(rs.next()){
                 com.setFechaCompra(rs.getString(2));
-                com.setDescripcion(rs.getString(3));
+                com.setDescripcionCompra(rs.getString(3));
                 com.setCantidad(rs.getDouble(4));
                 com.setCodigoProducto(rs.getInt(5));
             }
@@ -84,7 +85,7 @@ public class CompraDAO {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setString(1, com.getFechaCompra());
-            ps.setString(2, com.getDescripcion());
+            ps.setString(2, com.getDescripcionCompra());
             ps.setDouble(3, com.getCantidad());
             ps.setInt(4, com.getCodigoProducto());
             ps.executeUpdate();

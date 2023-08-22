@@ -25,13 +25,13 @@
                     <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="#">Home</a>
                 </li>
                 <li class="nav-item" style="padding-top: 28px;">
-                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="#">Cliente</a>
+                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Clientes&accion=Listar" target="myFrame">Clientes</a>
                 </li>
                 <li class="nav-item" style="padding-top: 28px;">
-                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="#">Categoría</a>
+                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Categoria&accion=Listar" target="myFrame">Categoría</a>
                 </li>
                 <li class="nav-item" style="padding-top: 28px;">
-                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="#">Proveedores</a>
+                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Proveedor&accion=Listar" target="myFrame">Proveedores</a>
                 </li>
                 <li class="nav-item" style="padding-top: 28px;">
                     <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Productos&accion=Listar" target="myFrame">Productos</a>
@@ -40,13 +40,22 @@
                     <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Empleados&accion=Listar" target="myFrame">Empleados</a>
                 </li>
                 <li class="nav-item" style="padding-top: 28px;">
-                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="#">Servicios</a>
+                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Servicios&accion=Listar" target="myFrame">Servicios</a>
                 </li>
                 <li class="nav-item" style="padding-top: 28px;">
-                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="#">Venta</a>
+                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Ventas&accion=Listar" target="myFrame">Venta</a>
                 </li>
                 <li class="nav-item" style="padding-top: 28px;">
-                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="#">Compra</a>
+                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Compras&accion=Listar" target="myFrame">Compra</a>
+                </li>
+                <li class="nav-item" style="padding-top: 28px;">
+                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=DetalleCompra&accion=Listar" target="myFrame">Detalle Compra</a>
+                </li>
+                <li class="nav-item" style="padding-top: 28px;">
+                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=DetalleVenta&accion=Listar" target="myFrame">Detalle Venta</a>
+                </li>
+                <li class="nav-item" style="padding-top: 28px;">
+                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=TipoEmpleado&accion=Listar" target="myFrame">Tipo Empleado</a>
                 </li>
             </ul>
         </div>

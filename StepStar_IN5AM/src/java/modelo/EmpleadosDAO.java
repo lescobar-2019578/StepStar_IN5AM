@@ -45,7 +45,7 @@ public class EmpleadosDAO {
    //METODO LISTAR
    public List listar(){
        String sql = "select * from Empleados";
-       List<Empleados> listaEmpleados = new ArrayList<Empleados>();
+       List<Empleados> listaEmpleados = new ArrayList<>();
        try{
            con = cn.Conexion();
            ps = con.prepareStatement(sql);
@@ -70,7 +70,7 @@ public class EmpleadosDAO {
    
    //METODO AGREGAR
    public int agregar(Empleados em){
-       String sql = "insert into Empleados(apellidosEmpleado,nombresEmpleado,direccionEmpleado,telefonoContacto,codigoTipoEmpleado) values(?,?,?,?,?)";
+       String sql = "insert into Empleados( DPI, apellidosEmpleado, nombresEmpleado, direccionEmpleado, telefonoContacto, codigoTipoEmpleado) values(?,?,?,?,?,?)";
        try{
            con = cn.Conexion();
            ps = con.prepareStatement(sql);
@@ -90,7 +90,7 @@ public class EmpleadosDAO {
    
    //METODO BUSCAR
    
-   public Empleados listarCodigoPredocutos(int id){
+   public Empleados listarCodigoEmpleados(int id){
        Empleados em = new Empleados();
        String sql = "Select * from Empleados where codigoEmpleado = " + id;
        try{
@@ -114,7 +114,7 @@ public class EmpleadosDAO {
   
    //METODO EDITAR
    public int actualizar(Empleados em){
-       String sql = "update Empleados set DPI = ?, apellidosEmpleado = ?, nombresEmpleado = ?, direccionEmpleado = ?, telefonoContacto = ?" + "where codigoEmpleado = ?";
+       String sql = "update Empleados set DPI = ?, apellidosEmpleado = ?, nombresEmpleado = ?, direccionEmpleado = ?, telefonoContacto = ?, codigoTipoEmpleado = ? where codigoEmpleado = ?";
        try{
           con = cn.Conexion();
           ps = con.prepareStatement(sql);
@@ -123,6 +123,8 @@ public class EmpleadosDAO {
           ps.setString(3, em.getNombresEmpleado());
           ps.setString(4, em.getDireccionEmpleado());
           ps.setString(5, em.getTelefonoContacto());
+          ps.setInt(6, em.getCodigoTipoEmpleado());
+          ps.setInt(7, em.getCodigoEmpleado());
           ps.executeUpdate();
        }catch(Exception e){
            e.printStackTrace();

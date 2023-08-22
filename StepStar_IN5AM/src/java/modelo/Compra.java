@@ -4,16 +4,16 @@ package modelo;
 public class Compra {
    private int codigoCompra;
    private String fechaCompra;
-   private String descripcion;
+   private String descripcionCompra;
    private Double cantidad;
    private int codigoProducto;
    
    public  Compra(){}
 
-    public Compra(int codigoCompra, String fechaCompra, String descripcion, Double cantidad, int codigoProducto) {
+    public Compra(int codigoCompra, String fechaCompra, String descripcionCompra, Double cantidad, int codigoProducto) {
         this.codigoCompra = codigoCompra;
         this.fechaCompra = fechaCompra;
-        this.descripcion = descripcion;
+        this.descripcionCompra = descripcionCompra;
         this.cantidad = cantidad;
         this.codigoProducto = codigoProducto;
     }
@@ -34,12 +34,12 @@ public class Compra {
         this.fechaCompra = fechaCompra;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getDescripcionCompra() {
+        return descripcionCompra;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDescripcionCompra(String descripcionCompra) {
+        this.descripcionCompra = descripcionCompra;
     }
 
     public Double getCantidad() {
