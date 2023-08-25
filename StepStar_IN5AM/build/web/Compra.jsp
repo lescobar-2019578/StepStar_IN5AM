@@ -22,21 +22,25 @@
                     <form action="Controlador?menu=Compra" method="POST">
                         <div class="form-group">
                             <label style="color: #f2f2f2">Fecha de Compra:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="date" value="${comprasEncontrado.getFechaCompra()}" name="txtFechaCompra" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Descipción de Compra:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${comprasEncontrado.getDescripcionCompra()}" name="txtDescripcionCompra" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Cantidad:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${comprasEncontrado.getCantidad()}" name="txtCantidadCompra" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label style="color: #f2f2f2">Codigo Producto:</label>
-                            <input type="text" name="" class="form-control">
+                            <label style="color: #f2f2f2">Código Producto:</label>
+                            <select name="cmbCodProducto" class="form-control">
+                                <option disable selected value="">Seleccione un dato</option>
+                                <c:forEach var="compra" items="${producto}">
+                                    <option value="${compra.getCodigoProducto()}">${compra.getCodigoProducto()} | ${compra.getMarca()}</option>
+                                </c:forEach>
+                            </select>
                         </div>
-                        
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                     </form>
@@ -51,6 +55,7 @@
                             <td style="color:#0D0D0D"><strong>DESCRIPCIÓN</strong></td>
                             <td style="color:#0D0D0D"><strong>CANTIDAD</strong></td>
                             <td style="color:#0D0D0D"><strong>COD. PRODUCTO</strong></td>
+                            <td style="color:#0D0D0D"><strong>ACCIONES</strong></td>
                         </tr>
                     </thead>
                     <tbody>
@@ -62,8 +67,8 @@
                                 <td>${compra.getCantidad()}</td>
                                 <td>${compra.getCodigoProducto()}</td>
                                 <td>
-                                    <a class="btn btn-warning" href="">Editar</a>
-                                    <a class="btn btn-danger" href="">Eliminar</a>
+                                    <a class="btn btn-warning" href="Controlador?menu=Compra&accion=Editar&codigoCompra=${compra.getCodigoCompra()}">Editar</a>
+                                    <a class="btn btn-danger" href="Controlador?menu=Compra&accion=Eliminar&codigoCompra=${compra.getCodigoCompra()}">Eliminar</a>
                                 </td>
                             </tr>
                         </c:forEach>

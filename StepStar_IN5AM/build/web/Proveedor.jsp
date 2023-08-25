@@ -24,22 +24,22 @@
         <div class="d-flex">
             <div style="background-color: #1E3E59" class="card colo-sm-3" >
                 <div style="background-color: #1E3E59" class="card-body">
-                    <form action="Controlador?menu=Proveedores" method="POST">
+                    <form action="Controlador?menu=Proveedor" method="POST">
                         <div class="form-group">
                             <label style="color: #f2f2f2">Nombre Proveedor:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${proveedor.getNombreProveedor()}" name="txtNombreProveedor" class="form-control">
                         </div>
                         <div class="form-grop">
                             <label style="color: #f2f2f2">Direccion Proveedor:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${proveedor.getDireccionProveedor()}" name="txtDireccionProveedor" class="form-control">
                         </div>
                         <div>
                             <label style="color: #f2f2f2">Telefono Proveedor:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${proveedor.getTelefonoProveedor()}" name="txtTelefonoProveedor" class="form-control">
                         </div>
                         <div>
                             <label style="color: #f2f2f2">Correo Proveedor:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${proveedor.getCorreoProveedor()}" name="txtCorreoProveedor" class="form-control">
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
@@ -59,7 +59,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="proveedor" items="${proveedor}">
+                        <c:forEach var="proveedor" items="${proveedores}">
                             <tr>
                                 <td>${proveedor.getCodigoProveedor()}</td>
                                 <td>${proveedor.getNombreProveedor()}</td>
@@ -67,8 +67,8 @@
                                 <td>${proveedor.getTelefonoProveedor()}</td>
                                 <td>${proveedor.getCorreoProveedor()}</td>
                                 <td>
-                                    <a class="btn btn-warning" href="">Editar</a>
-                                    <a class="btn btn-danger" href="">Eliminar</a>
+                                    <a class="btn btn-warning" href="Controlador?menu=Proveedor&accion=Editar&codigoProveedor=${proveedor.getCodigoProveedor()}">Editar</a>
+                                    <a class="btn btn-danger" href="Controlador?menu=Proveedor&accion=Eliminar&codigoProveedor=${proveedor.getCodigoProveedor()}">Eliminar</a>
                                 </td>
                             </tr>
                         </c:forEach>

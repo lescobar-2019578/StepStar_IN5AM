@@ -28,7 +28,7 @@ public class CompraDAO {
                 com.setCodigoCompra(rs.getInt(1));
                 com.setFechaCompra(rs.getString(2));
                 com.setDescripcionCompra(rs.getString(3));
-                com.setCantidad(rs.getDouble(4));
+                com.setCantidad(rs.getInt(4));
                 com.setCodigoProducto(rs.getInt(5));
                 listaCompras.add(com);
             }
@@ -41,7 +41,7 @@ public class CompraDAO {
     
     // Método Agregar
     public int agregar(Compra com){
-        String sql = "Insert into Compra(fechaCompra, descripcion, cantidad, codigoProducto)values(?,?,?,?)";
+        String sql = "Insert into Compra(fechaCompra, descCompra, cantidad, codigoProducto)values(?,?,?,?)";
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -68,7 +68,7 @@ public class CompraDAO {
             while(rs.next()){
                 com.setFechaCompra(rs.getString(2));
                 com.setDescripcionCompra(rs.getString(3));
-                com.setCantidad(rs.getDouble(4));
+                com.setCantidad(rs.getInt(4));
                 com.setCodigoProducto(rs.getInt(5));
             }
         }catch(Exception e){
@@ -80,7 +80,7 @@ public class CompraDAO {
     
     //Método Editar
     public int actualizar (Compra com){
-        String sql = "Update Compra set fechaCompra = ?, descripcion = ?, cantidad = ?, codigoProducto = ?";
+        String sql = "Update Compra set fechaCompra = ?, descCompra = ?, cantidad = ?, codigoProducto = ? where codigoCompra = ?";
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -88,6 +88,7 @@ public class CompraDAO {
             ps.setString(2, com.getDescripcionCompra());
             ps.setDouble(3, com.getCantidad());
             ps.setInt(4, com.getCodigoProducto());
+            ps.setInt(5, com.getCodigoCompra());
             ps.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();
