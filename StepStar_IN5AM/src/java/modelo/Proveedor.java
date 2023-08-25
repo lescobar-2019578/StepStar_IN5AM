@@ -1,3 +1,5 @@
+package modelo;
+
 public class Proveedor {
     private int codigoProveedor;
     private String nombreProveedor;

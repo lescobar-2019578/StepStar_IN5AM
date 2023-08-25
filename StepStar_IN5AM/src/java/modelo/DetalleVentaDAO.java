@@ -26,9 +26,12 @@ public class DetalleVentaDAO {
            while(rs.next()){
                DetalleVenta detalleVen = new DetalleVenta();
                detalleVen.setCodigoDetalleVenta(rs.getInt(1));
-               detalleVen.setCodigoCliente(rs.getInt(2));
-               detalleVen.setCodigoVenta(rs.getInt(3));
-               detalleVen.setCodigoProducto(rs.getInt(4));
+               detalleVen.setFechaVen(rs.getString(2));
+               detalleVen.setCantidadPro(rs.getInt(3));
+               detalleVen.setTotal(rs.getString(4));
+               detalleVen.setCodigoVenta(rs.getInt(5));
+               detalleVen.setCodigoProducto(rs.getInt(6));
+               listaDetalleVenta.add(detalleVen);
            }
        }catch(Exception e){
            e.printStackTrace();
@@ -37,15 +40,17 @@ public class DetalleVentaDAO {
    }
    
    //Método Agregar
-   public int agregar(DetalleVenta detalleVen) throws SQLException{
-       String sql = "insert into DetalleVenta(codigoCliente, codigoVenta, codigoProducto)\n" +
-"	values (?, ?, ?);";
+   public int agregar(DetalleVenta detalleVen){
+       String sql = "insert into DetalleVenta(fechaVen, cantidadPro, total, codigoVenta, codigoProducto)\n" +
+"	values (?, ?, ?, ?, ?);";
        try{
           conec = conx.Conexion();
             ps = conec.prepareStatement(sql);
-            ps.setInt(1, detalleVen.getCodigoCliente());
-            ps.setInt(2, detalleVen.getCodigoVenta());
-            ps.setInt(3, detalleVen.getCodigoProducto());
+            ps.setString(1, detalleVen.getFechaVen());
+            ps.setInt(2, detalleVen.getCantidadPro());
+            ps.setString(3, detalleVen.getTotal());
+            ps.setInt(4, detalleVen.getCodigoVenta());
+            ps.setInt(5, detalleVen.getCodigoProducto());
             ps.executeUpdate(); 
        }catch(Exception e){
            e.printStackTrace();
@@ -62,9 +67,11 @@ public class DetalleVentaDAO {
            ps = conec.prepareStatement(sql);
            rs = ps.executeQuery();
            while(rs.next()){
-               detalleVen.setCodigoCliente(rs.getInt(2));
-               detalleVen.setCodigoVenta(rs.getInt(3));
-               detalleVen.setCodigoProducto(rs.getInt(4));   
+               detalleVen.setFechaVen(rs.getString(2));
+               detalleVen.setCantidadPro(rs.getInt(3));
+               detalleVen.setTotal(rs.getString(4));
+               detalleVen.setCodigoVenta(rs.getInt(5));
+               detalleVen.setCodigoProducto(rs.getInt(6));   
            }
        }catch(Exception e){
            e.printStackTrace();

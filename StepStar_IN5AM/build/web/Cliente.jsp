@@ -21,7 +21,7 @@
                     <form action="Controlador?menu=Cliente" method="POST">
                         <div class="form-group">
                             <label style="color: #f2f2f2">DPI:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" name="txtDPICLIENTE" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Nombre Cliente:</label>
