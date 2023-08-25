@@ -24,21 +24,38 @@
         <div class="d-flex">
             <div style="background-color:#1E3E59" class="card colo-sm-3">
                 <div style="background-color:#1E3E59" class="card-body">
-                    <form action="Controlador?menu=Producto" method="POST">
+                    <form action="Controlador?menu=DetalleVenta" method="POST">
                         <div class="form-group">
-                            <label style="color: #f2f2f2">Codigo Cliente:</label>
-                            <input type="text" name="" class="form-control">
+                            <label style="color: #f2f2f2">Fecha Venta:</label>
+                            <input type="date" id="nacimiento" name="txtFechaVen"  class="sm-form-control">
                         </div>
                         <div class="form-group">
-                            <label style="color: #f2f2f2">Codigo Venta:</label>
-                            <input type="text" name="" class="form-control">
+                            <label style="color: #f2f2f2">Cantidad Producto:</label>
+                            <input type="text" name="txtCantidadPro" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label style="color: #f2f2f2">Codigo Producto:</label>
-                            <input type="text" name="" class="form-control">
+                            <label style="color: #f2f2f2">Total:</label>
+                            <input type="text" name="txtTotal" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label style="color: #f2f2f2">Código Venta</label>
+                            <select name="cmbCodVenta" class="form-control">
+                                <option disable selected value="">Seleccione un dato</option>
+                                <c:forEach var="detalleVenta" items="${venta}">
+                                    <option value="${detalleVenta.getCodigoVenta()}">${detalleVenta.getCodigoVenta()} | ${detalleVenta.getDescripcion()}</option>          
+                                </c:forEach>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label style="color: #f2f2f2">Código Producto</label>
+                            <select name="cmbCodProducto" class="form-control">
+                                <option disable selected value="">Seleccione un dato</option>
+                                <c:forEach var="detalleVenta" items="${producto}">
+                                    <option value="${detalleVenta.getCodigoProducto()}">${detalleVenta.getCodigoProducto()} | ${detalleVenta.getNombreProducto()}</option>          
+                                </c:forEach>
+                            </select>
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
-                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                     </form>
                 </div>
             </div>
@@ -47,7 +64,9 @@
                     <thead>
                         <tr>
                             <td style="color:#0D0D0D"><strong>CODIGO DETALLE</strong></td>
-                            <td style="color:#0D0D0D"><strong>CODIGO CLIENTE</strong></td>
+                            <td style="color:#0D0D0D"><strong>FECHA VENTA</strong></td>
+                            <td style="color:#0D0D0D"><strong>CANTIDAD PRODUCTO</strong></td>
+                            <td style="color:#0D0D0D"><strong>TOTAL</strong></td>
                             <td style="color:#0D0D0D"><strong>CODIGO VENTA</strong></td>
                             <td style="color:#0D0D0D"><strong>CODIGO PRODUCTO</strong></td>
                             <td style="color:#0D0D0D"><strong>ACCIONES</strong></td>
@@ -57,12 +76,13 @@
                         <c:forEach var="detalleVenta" items="${detalleVenta}">
                             <tr>
                                 <td>${detalleVenta.getCodigoDetalleVenta()}</td>
-                                <td>${detalleVenta.getCodigoCliente()}</td>
+                                <td>${detalleVenta.getFechaVen()}</td>
+                                <td>${detalleVenta.getCantidadPro()}</td>
+                                <td>${detalleVenta.getTotal()}</td>
                                 <td>${detalleVenta.getCodigoVenta()}</td>
                                 <td>${detalleVenta.getCodigoProducto()}</td>
                                 <td>
-                                    <a class="btn btn-warning" href="">Editar</a>
-                                    <a class="btn btn-danger" href="">Eliminar</a>
+                                    <a class="btn btn-danger" href="Controlador?menu=DetalleVenta&accion=Eliminar&codigoDetalleVenta=${detalleVenta.getCodigoDetalleVenta()}">Eliminar</a>
                                 </td>
                             </tr>
                         </c:forEach>

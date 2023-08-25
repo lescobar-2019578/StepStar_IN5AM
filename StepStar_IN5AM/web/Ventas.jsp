@@ -24,26 +24,31 @@
         <div class="d-flex">
             <div style="background-color:#1E3E59" class="card colo-sm-3">
                 <div style="background-color:#1E3E59" class="card-body">
-                    <form action="Controlador?menu=Producto" method="POST">
+                    <form action="Controlador?menu=Ventas" method="POST">
                         <div class="form-group">
                             <label style="color: #f2f2f2">Fecha Venta:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="date" id="nacimiento" value="${ventaEncontrada.getFechaVenta()}" name="txtFecha"  class="sm-form-control">
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Descripción:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${ventaEncontrada.getDescripcion()}" name="txtDescripcion" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Cantidad:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${ventaEncontrada.getCantidad()}" name="txtCantidad" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Dirección Envio:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${ventaEncontrada.getDireccionEnvio()}" name="txtDireccion" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Código Servicio</label>
-                            <input type="text" name="" class="form-control">
+                            <select name="cmbCodServicio" class="form-control" >
+                                <option disable selected value="">Seleccione un dato</option>
+                                <c:forEach var="venta" items="${servicio}">
+                                    <option value="${venta.getCodigoServicio()}">${venta.getCodigoServicio()} | ${venta.getTipoServicio()}</option>          
+                                </c:forEach>
+                            </select>
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
@@ -73,8 +78,8 @@
                                 <td>${venta.getDireccionEnvio()}</td>
                                 <td>${venta.getCodigoServicio()}</td>
                                 <td>
-                                    <a class="btn btn-warning" href="">Editar</a>
-                                    <a class="btn btn-danger" href="">Eliminar</a>
+                                    <a class="btn btn-warning" href="Controlador?menu=Ventas&accion=Editar&codigoVenta=${venta.getCodigoVenta()}">Editar</a>
+                                    <a class="btn btn-danger" href="Controlador?menu=Ventas&accion=Eliminar&codigoVenta=${venta.getCodigoVenta()}">Eliminar</a>
                                 </td>
                             </tr>
                         </c:forEach>

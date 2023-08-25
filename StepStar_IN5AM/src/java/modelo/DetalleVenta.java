@@ -2,18 +2,20 @@ package modelo;
 
 public class DetalleVenta {
     private int codigoDetalleVenta;
-    private int codigoCliente;
+    private String fechaVen;
+    private int cantidadPro;
+    private String total;
     private int codigoVenta;
     private int codigoProducto;
 
-
     public DetalleVenta() {
-
     }
 
-    public DetalleVenta(int codigoDetalleVenta, int codigoCliente, int codigoVenta, int codigoProducto) {
+    public DetalleVenta(int codigoDetalleVenta, String fechaVen, int cantidadPro, String total, int codigoVenta, int codigoProducto) {
         this.codigoDetalleVenta = codigoDetalleVenta;
-        this.codigoCliente = codigoCliente;
+        this.fechaVen = fechaVen;
+        this.cantidadPro = cantidadPro;
+        this.total = total;
         this.codigoVenta = codigoVenta;
         this.codigoProducto = codigoProducto;
     }
@@ -26,12 +28,28 @@ public class DetalleVenta {
         this.codigoDetalleVenta = codigoDetalleVenta;
     }
 
-    public int getCodigoCliente() {
-        return codigoCliente;
+    public String getFechaVen() {
+        return fechaVen;
     }
 
-    public void setCodigoCliente(int codigoCliente) {
-        this.codigoCliente = codigoCliente;
+    public void setFechaVen(String fechaVen) {
+        this.fechaVen = fechaVen;
+    }
+
+    public int getCantidadPro() {
+        return cantidadPro;
+    }
+
+    public void setCantidadPro(int cantidadPro) {
+        this.cantidadPro = cantidadPro;
+    }
+
+    public String getTotal() {
+        return total;
+    }
+
+    public void setTotal(String total) {
+        this.total = total;
     }
 
     public int getCodigoVenta() {
@@ -49,7 +67,6 @@ public class DetalleVenta {
     public void setCodigoProducto(int codigoProducto) {
         this.codigoProducto = codigoProducto;
     }
-    
-    
+
 
 }
