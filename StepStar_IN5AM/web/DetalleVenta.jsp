@@ -23,7 +23,7 @@
     <body>
         <div class="d-flex">
             <div style="background-color:#1E3E59" class="card colo-sm-3">
-                <div style="background-color:#1E3E59" class="card-body">
+                <div style="background-color:#1E3E59 "   class="card-body">
                     <form action="Controlador?menu=Producto" method="POST">
                         <div class="form-group">
                             <label style="color: #f2f2f2">Codigo Cliente:</label>

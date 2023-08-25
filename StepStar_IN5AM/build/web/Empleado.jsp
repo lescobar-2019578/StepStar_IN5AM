@@ -28,27 +28,32 @@
                     <form action="Controlador?menu=Empleados" method="POST">
                         <div class="form-group">
                             <label style="color: #f2f2f2">DPI:</label>
-                            <input type="text" value="${empleado.getDPI()}" name="txtDPIEmpleado" class="form-control">
+                            <input type="text" value="${empleadoEncontrado.getDPI()}" name="txtDPIEmpleado" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Apellido Empleado:</label>
-                            <input type="text" value="${empleado.getApellidosEmpleado()}" name="txtApellidoEmpleado" class="form-control">
+                            <input type="text" value="${empleadoEncontrado.getApellidosEmpleado()}" name="txtApellidoEmpleado" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Nombre Empleado:</label>
-                            <input type="text" value="${empleado.getNombresEmpleado()}" name="txtNombreEmpleado" class="form-control">
+                            <input type="text" value="${empleadoEncontrado.getNombresEmpleado()}" name="txtNombreEmpleado" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label style="color: #f2f2f2">Direccion:</label>
-                            <input type="text" value="${empleado.getDireccionEmpleado()}" name="txtDireccionEmpleado" class="form-control">
+                            <label style="color: #f2f2f2">Dirección:</label>
+                            <input type="text" value="${empleadoEncontrado.getDireccionEmpleado()}" name="txtDireccionEmpleado" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label style="color: #f2f2f2">Telefono:</label>
-                            <input type="text" value="${empleado.getTelefonoContacto()}" name="txtTelefonoEmpleado" class="form-control">
+                            <label style="color: #f2f2f2">Télefono:</label>
+                            <input type="text" value="${empleadoEncontrado.getTelefonoContacto()}" name="txtTelefonoEmpleado" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label style="color: #f2f2f2">Codigo TipoEmpleado:</label>
-                            <input type="number" value="${empleado.getCodigoTipoEmpleado()}" name="txtCodigoTipoEmpleado" class="form-control">
+                            <label style="color: #f2f2f2">Código TipoEmpleado:</label>
+                            <select name="cmbCodigoTipoEmpleado" class="form-control">
+                                <option disable selected value="">Seleccione un dato</option>
+                                <c:forEach var="empleado" items="${tipoEmpleado}">
+                                    <option value="${empleado.getCodigoTipoEmpleado()}">${empleado.getCodigoTipoEmpleado()} | ${empleado.getCategoriaEmpleado()}</option>
+                                </c:forEach>
+                            </select>
                         </div>
                         
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
@@ -90,9 +95,6 @@
                 </table>
             </div>
         </div>
-        
-        
-        
         
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

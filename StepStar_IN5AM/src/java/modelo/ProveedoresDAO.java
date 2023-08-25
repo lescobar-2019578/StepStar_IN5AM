@@ -38,14 +38,16 @@ public class ProveedoresDAO {
     }
     
     public int agregar(Proveedor pr){
-        String sql = "insert into Proveedores(nombreProveedor, direccionProveedor, telefonoProveedor, correoProveedor) values(?,?,?,?)";
+        String sql = "insert into Proveedores( nombreProveedor, direccionProveedor, telefonoProveedor, correoProveedor) values(?,?,?,?)";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
+            
             ps.setString(1, pr.getNombreProveedor());
             ps.setString(2, pr.getDireccionProveedor());
             ps.setString(3, pr.getTelefonoProveedor());
             ps.setString(4, pr.getCorreoProveedor());
+            ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -72,11 +74,8 @@ public class ProveedoresDAO {
     }
     
     public int actualizar(Proveedor pr){
-        String sql = "Update Proveedor set nombreProveedor = ?" 
-                + "direccionProveedor = ?,"
-                + "telefonoProveedor = ?,"
-                + "correoProveedor = ?"
-                + "where codigoProveedor = ?";
+        String sql = "Update Proveedores set nombreProveedor = ?, direccionProveedor = ?, telefonoProveedor = ?, correoProveedor = ? where codigoProveedor = ?";
+  
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -84,6 +83,8 @@ public class ProveedoresDAO {
             ps.setString(2, pr.getDireccionProveedor());
             ps.setString(3, pr.getTelefonoProveedor());
             ps.setString(4, pr.getCorreoProveedor());
+            ps.setInt(5, pr.getCodigoProveedor());
+            ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }

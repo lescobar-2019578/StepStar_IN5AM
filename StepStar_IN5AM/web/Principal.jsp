@@ -20,9 +20,9 @@
 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <img src="img/stepstar3.png" alt="" style="margin-left: 20px; padding-bottom: 10px; height: 100px; width: 110x;">
+                <img src="img/stepstar3.png"  alt="" style="margin-left: 20px; padding-bottom: 10px; height: 100px; width: 110x;">
                 <li class="nav-item" style="padding-top: 28px;">
-                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="#">Home</a>
+                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Home" target="myFrame">Home</a>
                 </li>
                 <li class="nav-item" style="padding-top: 28px;">
                     <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Clientes&accion=Listar" target="myFrame">Clientes</a>

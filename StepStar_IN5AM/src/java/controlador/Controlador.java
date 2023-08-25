@@ -92,6 +92,7 @@ public class Controlador extends HttpServlet {
             String accion = request.getParameter("accion");
             if(menu.equals("Principal")){
                 request.getRequestDispatcher("Principal.jsp").forward(request, response);
+                
             }else if(menu.equals("Productos")){
                 switch(accion){
                     case "Listar":
@@ -106,6 +107,8 @@ public class Controlador extends HttpServlet {
                     case "Listar":
                         List listaEmpleados = empleadoDao.listar();
                         request.setAttribute("empleados", listaEmpleados);
+                        List listaTipoEmpleado = tipoEmpleadoDao.listar();
+                        request.setAttribute("tipoEmpleado", listaTipoEmpleado);
                         break;
                     case "Agregar":
                         String DPI = request.getParameter("txtDPIEmpleado");
@@ -113,7 +116,7 @@ public class Controlador extends HttpServlet {
                         String nombres = request.getParameter("txtNombreEmpleado");
                         String direccion = request.getParameter("txtDireccionEmpleado");
                         String telefono = request.getParameter("txtTelefonoEmpleado");
-                        int codigoTipoEmpleado = Integer.parseInt(request.getParameter("txtCodigoTipoEmpleado"));
+                        int codigoTipoEmpleado = Integer.parseInt(request.getParameter("cmbCodigoTipoEmpleado"));
                         empleado.setDPI(DPI);
                         empleado.setApellidosEmpleado(apellidos);
                         empleado.setNombresEmpleado(nombres);
@@ -126,7 +129,7 @@ public class Controlador extends HttpServlet {
                     case "Editar":
                         codEmpleado =  Integer.parseInt(request.getParameter("codigoEmpleado"));
                         Empleados e = empleadoDao.listarCodigoEmpleados(codEmpleado);
-                        request.setAttribute("empleado", e);
+                        request.setAttribute("empleadoEncontrado", e);
                         request.getRequestDispatcher("Controlador?menu=Empleados&accion=Listar").forward(request, response);
                         break;
                     case "Actualizar":
@@ -135,7 +138,7 @@ public class Controlador extends HttpServlet {
                         String nombresEmp = request.getParameter("txtNombreEmpleado");
                         String direccionEmp = request.getParameter("txtDireccionEmpleado");
                         String telefonoEmp = request.getParameter("txtTelefonoEmpleado");
-                        int codigoTipoEmpleadoEmp = Integer.parseInt(request.getParameter("txtCodigoTipoEmpleado"));
+                        int codigoTipoEmpleadoEmp = Integer.parseInt(request.getParameter("cmbCodigoTipoEmpleado"));
                         empleado.setDPI(DPIEmp);
                         empleado.setApellidosEmpleado(apellidosEmp);
                         empleado.setNombresEmpleado(nombresEmp);
@@ -236,11 +239,49 @@ public class Controlador extends HttpServlet {
                 switch(accion){
                     case "Listar":
                         List listaProveedor = proveedoresDao.listar();
-                        request.setAttribute("proveedor", listaProveedor);
+                        request.setAttribute("proveedores", listaProveedor);
+                        break;
+                    case "Agregar":
+                        String nombrePro = request.getParameter("txtNombreProveedor");
+                        String direcPro = request.getParameter("txtDireccionProveedor");
+                        String telPro = request.getParameter("txtTelefonoProveedor");
+                        String correoPro = request.getParameter("txtCorreoProveedor");
+                        proveedor.setNombreProveedor(nombrePro);
+                        proveedor.setDireccionProveedor(direcPro);
+                        proveedor.setTelefonoProveedor(telPro);
+                        proveedor.setCorreoProveedor(correoPro);
+                        proveedoresDao.agregar(proveedor);
+                        request.getRequestDispatcher("Controlador?menu=Proveedor&accion=Listar").forward(request, response);
+                        break;
+                    case "Editar":
+                        codProveedor = Integer.parseInt(request.getParameter("codigoProveedor"));
+                        Proveedor pr = proveedoresDao.listarCodigoProveedor(codProveedor);
+                        request.setAttribute("proveedor", pr);
+                        request.getRequestDispatcher("Controlador?menu=Proveedor&accion=Listar").forward(request, response);
+                        break;
+                    case "Actualizar":
+                        String nombreProve = request.getParameter("txtNombreProveedor");
+                        String direcProve = request.getParameter("txtDireccionProveedor");
+                        String telProve = request.getParameter("txtTelefonoProveedor");
+                        String correoProve = request.getParameter("txtCorreoProveedor");
+                        proveedor.setNombreProveedor(nombreProve);
+                        proveedor.setDireccionProveedor(direcProve);
+                        proveedor.setTelefonoProveedor(telProve);
+                        proveedor.setCorreoProveedor(correoProve);
+                        proveedor.setCodigoProveedor(codProveedor);
+                        proveedoresDao.actualizar(proveedor);
+                        request.getRequestDispatcher("Controlador?menu=Proveedor&accion=Listar").forward(request, response);
+                        break;
+                    case "Eliminar":
+                        codProveedor = Integer.parseInt(request.getParameter("codigoProveedor"));
+                        proveedoresDao.eliminar(codProveedor);
+                        request.getRequestDispatcher("Controlador?menu=Proveedor&accion=Listar").forward(request, response);
                         break;
                 }
                 request.getRequestDispatcher("Proveedor.jsp").forward(request, response);
-            } 
+            }else if(menu.equals("Home")){
+                 request.getRequestDispatcher("Home.jsp").forward(request, response);
+            }
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
