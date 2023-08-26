@@ -24,17 +24,40 @@
         <div class="d-flex">
             <div style="background-color:#1E3E59" class="card colo-sm-3">
                 <div style="background-color:#1E3E59" class="card-body">
-                    <form action="Controlador?menu=Producto" method="POST">
+                    <form action="Controlador?menu=DetalleCompra" method="POST">
                         <div class="form-group">
-                            <label style="color: #f2f2f2">Codigo Venta:</label>
-                            <input type="text" name="" class="form-control">
+                             <label style="color: #f2f2f2">Fecha de inicio</label>
+                                    <input class="form-control" type="date" value="" name="fecha"/>
                         </div>
                         <div class="form-group">
-                            <label style="color: #f2f2f2">Codigo Compra:</label>
-                            <input type="text" name="" class="form-control">
+                                    <label style="color: #f2f2f2">Cantidad</label>
+                                   <input type="text" name="CantidadProducto" class="form-control">
+                                </div>
+                        <div class="form-group">
+                            <label style="color: #f2f2f2">Codigo Venta</label>
+                            <br>
+                            <select name="cmbCodigoVenta" class="form-control">
+                                <option disable selected value="">Seleccione un dato</option>
+                                <c:forEach var="venta" items="${venta}">
+
+                                    <option value="${venta.getCodigoVenta()}">${venta.getCodigoVenta()} | ${venta.getDescripcion()}</option>          
+
+                                </c:forEach>
+                            </select>
                         </div>
-                        <input type="submit" name="accion" value="Agregar" class="btn btn-info">
-                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
+                        <div class="form-group">
+                             <label style="color: #f2f2f2">Codigo Compra</label>
+                            <br>
+                            <select name="cmbCodigoCompra" class="form-control">
+                                <option disable selected value="">Seleccione un dato</option>
+                                <c:forEach var="compra" items="${compra}">
+
+                                    <option value="${compra.getCodigoCompra()}">${compra.getCodigoCompra()} | ${compra.getDescripcionCompra()}</option>          
+
+                                </c:forEach>
+                            </select>
+                        </div>
+                        <input type="submit" name="accion" value="AgregarDetalleCompra" class="btn btn-info">
                     </form>
                 </div>
             </div>
@@ -43,20 +66,24 @@
                     <thead>
                         <tr>
                             <td style="color:#0D0D0D"><strong>CODIGO</strong></td>
+                            <td style="color:#0D0D0D"><strong>FECHA</strong></td>
+                               <td style="color:#0D0D0D"><strong>CANTIDAD</strong></td>
                             <td style="color:#0D0D0D"><strong>CODIGO VENTA</strong></td>
                             <td style="color:#0D0D0D"><strong>CODIGO COMPRA</strong></td>
                             <td style="color:#0D0D0D"><strong>ACCIONES</strong></td>
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="detalleCompras" items="${detalleCompras}">
+                        <c:forEach var="detalleCompra" items="${detalleCompras}">
                             <tr>
-                                <td>${detalleCompras.getCodigoDetalleCompra()}</td>
-                                <td>${detalleCompras.getCodigoVenta()}</td>
-                                <td>${detalleCompras.getCodigoCompra()}</td>
+                                <td>${detalleCompra.getCodigoDetalleCompra()}</td>
+                                <td>${detalleCompra.getFechaCom()}</td>
+                                <td>${detalleCompra.getCantidadProductos()}</td>
+                                <td>${detalleCompra.getCodigoVenta()}</td>
+                                <td>${detalleCompra.getCodigoCompra()}</td>
+                                
                                 <td>
-                                    <a class="btn btn-warning" href="">Editar</a>
-                                    <a class="btn btn-danger" href="">Eliminar</a>
+                                    <a class="btn btn-danger" href="Controlador?menu=DetalleCompra&accion=EliminarDetalleCompra&codigoDetalleCompra=${detalleCompra.getCodigoDetalleCompra()}">Eliminar</a>
                                 </td>
                             </tr>
                         </c:forEach>

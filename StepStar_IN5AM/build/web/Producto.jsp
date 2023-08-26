@@ -1,6 +1,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="modelo.Categoria" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,38 +20,48 @@
         <div class="d-flex">
             <div style="background-color:#1E3E59" class="card colo-sm-3">
                 <div style="background-color:#1E3E59" class="card-body">
-                    <form action="Controlador?menu=Producto" method="POST">
+                    <form action="Controlador?menu=Productos" method="POST">
                         <div class="form-group">
                             <label style="color: #f2f2f2">Nombre Producto:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${productos.getNombreProducto()}" name="txtNombreProducto" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Descipción:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${productos.getDescripcion()}" name="txtDescripcion" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Marca:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${productos.getMarca()}" name="txtMarca" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Precio:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${productos.getPrecio()}" name="txtPrecio" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Talla:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${productos.getTalla()}" name="txtTalla" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Cantidad:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${productos.getCantidad()}" name="txtCantidad" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Codigo Proveedor:</label>
-                            <input type="text" name="" class="form-control">
+                            <select name="cmbCodProveedor" class="form-control" >
+                                <option disable selected value="">Seleccione un dato</option>
+                                <c:forEach var="producto" items="${proveedores}">
+                                    <option value="${producto.getCodigoProveedor()}">${producto.getCodigoProveedor()} | ${producto.getNombreProveedor()}</option>
+                                </c:forEach>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Codigo Categoria:</label>
-                            <input type="text" name="" class="form-control">
+                            <select name="cmbCodCategoria" class="form-control">
+                                <option disable selected value="">Seleccione un dato</option>
+                                <c:forEach var="producto" items="${categoria}">
+                                    <option value="${producto.getCodigoCategoria()}">${producto.getCodigoCategoria()} | ${producto.getNombreCategoria()}</option>
+                                </c:forEach>
+                            </select>
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
@@ -68,7 +79,7 @@
                             <td style="color:#0D0D0D"><strong>PRECIO</strong></td>
                             <td style="color:#0D0D0D"><strong>TALLA</strong></td>
                             <td style="color:#0D0D0D"><strong>CANTIDAD</strong></td>
-                            <td style="color:#0D0D0D"><strong>PROVEEDORM</strong></td>
+                            <td style="color:#0D0D0D"><strong>PROVEEDOR</strong></td>
                             <td style="color:#0D0D0D"><strong>CATEGORIA</strong></td>
                             <td style="color:#0D0D0D"><strong>ACCIONES</strong></td>
                         </tr>
@@ -86,8 +97,8 @@
                                 <td>${producto.getCodigoProveedor()}</td>
                                 <td>${producto.getCodigoCategoria()}</td>
                                 <td>
-                                    <a class="btn btn-warning" href="">Editar</a>
-                                    <a class="btn btn-danger" href="">Eliminar</a>
+                                    <a class="btn btn-warning" href="Controlador?menu=Productos&accion=Editar&codigoProducto=${producto.getCodigoProducto()}">Editar</a>
+                                    <a class="btn btn-danger" href="Controlador?menu=Productos&accion=Eliminar&codigoProducto=${producto.getCodigoProducto()}">Eliminar</a>
                                 </td>
                             </tr>
                         </c:forEach>

@@ -5,12 +5,12 @@ public class Compra {
    private int codigoCompra;
    private String fechaCompra;
    private String descripcionCompra;
-   private Double cantidad;
+   private int cantidad;
    private int codigoProducto;
    
    public  Compra(){}
 
-    public Compra(int codigoCompra, String fechaCompra, String descripcionCompra, Double cantidad, int codigoProducto) {
+    public Compra(int codigoCompra, String fechaCompra, String descripcionCompra, int cantidad, int codigoProducto) {
         this.codigoCompra = codigoCompra;
         this.fechaCompra = fechaCompra;
         this.descripcionCompra = descripcionCompra;
@@ -42,11 +42,11 @@ public class Compra {
         this.descripcionCompra = descripcionCompra;
     }
 
-    public Double getCantidad() {
+    public int getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(Double cantidad) {
+    public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
 

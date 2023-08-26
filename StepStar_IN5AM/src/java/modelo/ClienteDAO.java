@@ -15,31 +15,6 @@ public class ClienteDAO {
     ResultSet rs;
     int resp;                                            
     
-    public Cliente Validar(String nombresCliente, String nit){
-        //instanciar un objeto de la entidad empleado
-        Cliente cliente = new Cliente();
-        //Agregamos una variable de tipo String para nuestra consulta SQL
-        String sql = "select * from Cliente where nombresCliente = ? and nit = ?";
-        try{
-            con = cn.Conexion();
-            ps = con.prepareCall(sql);
-            ps.setString(1, nombresCliente);
-            ps.setString(2, nit);
-            rs = ps.executeQuery();
-            while(rs.next()){
-                cliente.setCodigoCliente(rs.getInt("codigoCliente"));
-                cliente.setNombresCliente(rs.getString("nombresCliente"));
-                cliente.setApellidoCliente(rs.getString("apellidoCliente"));
-                cliente.setNit(rs.getString("nit"));
-                cliente.setEstadoActivo(rs.getString("estadoActivo"));
-                cliente.setTelefonoCliente(rs.getString("telefonoCliente"));
-            }
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        
-        return cliente; //Empleado encontrado
-    }
     
     //Método Listar
     public List listar(){
@@ -65,16 +40,16 @@ public class ClienteDAO {
         return listaCliente;
     }
     //Método Agregar
-    public int agregar(Cliente emp){
-        String sql = "Insert into Cliente (nombresCliente, apellidoCliente, nit, estadoActivo, telefonoCliente) values (?, ?, ?, ?, ?)";
+    public int agregar(Cliente cli){
+        String sql = "Insert into Cliente (nombreCliente, apellidoCliente, NIT, estadoActivo, telefonoCliente) values (?, ?, ?, ?, ?)";
         try{
            con = cn.Conexion();
            ps = con.prepareCall(sql);
-           ps.setString(1, emp.getNombresCliente());
-           ps.setString(2, emp.getApellidoCliente());
-           ps.setString(3, emp.getNit());
-           ps.setString(4, emp.getEstadoActivo());
-           ps.setString(5, emp.getTelefonoCliente());
+           ps.setString(1, cli.getNombresCliente());
+           ps.setString(2, cli.getApellidoCliente());
+           ps.setString(3, cli.getNit());
+           ps.setString(4, cli.getEstadoActivo());
+           ps.setString(5, cli.getTelefonoCliente());
            ps.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();
@@ -105,17 +80,17 @@ public class ClienteDAO {
     }
     
     //Método Editar
-    public int actualizar(Cliente emp){
-        String sql = "update Cliente set nit = ?, nombresCliente = ?, apellidoCliente = ?, nit = ?, telefonoCliente = ? where codigoCliente = ?";
+    public int actualizar(Cliente cli){
+        String sql = "update Cliente set nombreCliente = ?, apellidoCliente = ?, NIT = ?, estadoActivo = ?, telefonoCliente = ? where codigoCliente = ?";
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.setString(1, emp.getNombresCliente());
-            ps.setString(2, emp.getApellidoCliente());
-            ps.setString(3, emp.getNit());
-            ps.setString(4, emp.getEstadoActivo());
-            ps.setString(5, emp.getNombresCliente());
-            ps.setInt(6, emp.getCodigoCliente());
+            ps.setString(1, cli.getNombresCliente());
+            ps.setString(2, cli.getApellidoCliente());
+            ps.setString(3, cli.getNit());
+            ps.setString(4, cli.getEstadoActivo());
+            ps.setString(5, cli.getTelefonoCliente());
+            ps.setInt(6, cli.getCodigoCliente());
             ps.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();

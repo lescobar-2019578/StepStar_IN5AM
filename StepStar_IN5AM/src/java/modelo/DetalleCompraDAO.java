@@ -16,12 +16,14 @@ public class DetalleCompraDAO {
 
     // Método Agregar
     public int agregar(DetalleCompra detalleCompra) {
-        String sql = "INSERT INTO DetalleCompra (codigoVenta, codigoCompra) VALUES (?, ?)";
+        String sql = "INSERT INTO DetalleCompra (fechaCom,cantidadProductos,codigoVenta, codigoCompra) VALUES (?,?,?,?)";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.setInt(1, detalleCompra.getCodigoVenta());
-            ps.setInt(2, detalleCompra.getCodigoCompra());
+            ps.setDate(1, detalleCompra.getFechaCom());
+            ps.setInt(2, detalleCompra.getCantidadProductos());
+            ps.setInt(3, detalleCompra.getCodigoVenta());
+            ps.setInt(4, detalleCompra.getCodigoCompra());
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -40,6 +42,8 @@ public class DetalleCompraDAO {
             while (rs.next()) {
                 DetalleCompra detalleCompra = new DetalleCompra();
                 detalleCompra.setCodigoDetalleCompra(rs.getInt("codigoDetalleCompra"));
+                detalleCompra.setFechaCom(rs.getDate("fechaCom"));
+                detalleCompra.setCantidadProductos(rs.getInt("cantidadProductos"));
                 detalleCompra.setCodigoVenta(rs.getInt("codigoVenta"));
                 detalleCompra.setCodigoCompra(rs.getInt("codigoCompra"));
                 listaDetalleCompra.add(detalleCompra);
@@ -68,11 +72,11 @@ public class DetalleCompraDAO {
 
     // Método Eliminar
     public void eliminar(int id) {
-        String sql = "DELETE FROM DetalleCompra WHERE codigoDetalleCompra = ?";
+        String sql = "DELETE FROM DetalleCompra WHERE codigoDetalleCompra = "+ id;
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.setInt(1, id);
+         
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
