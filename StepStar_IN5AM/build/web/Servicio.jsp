@@ -1,5 +1,3 @@
-
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,52 +18,57 @@
         <div class="d-flex">
             <div style="background-color:#1E3E59" class="card col-sm-3">
                 <div style="background-color:#1E3E59" class="card-body">
-                    <form  action="Controlador?menu=Servicio" method="POST">
+                    <form  action="Controlador?menu=Servicios" method="POST">
                         <div class="form-group">
                             <label style="color:#f2f2f2 ">Fecha de Servicio:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="date" value="${servicio.getFechaServicio()}" name="txtFechaServicio"  class="sm-form-control">
                         </div>
                         <div class="form-group">
                             <label style="color:#f2f2f2">Tipo de Servicio:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${servicio.getTipoServicio()}" name="txtTipoServicio" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color:#f2f2f2" >Hora del Servicio:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="time" value="${servicio.getHoraServicio()}" name="txtHoraServicio" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color:#f2f2f2">Lugar del Servicio:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${servicio.getLugarServicio()}" name="txtLugarServicio" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color:#f2f2f2">Teléfono:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${servicio.getTelefonoServicio()}" name="txtTelefonoServicio" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color:#f2f2f2" >Codigo Empleado:</label>
-                            <input type="text" name="" class="form-control">
-                        </div>
+                            <select name="cmbCodEmpleado" class="form-control" <%= (request.getAttribute("deshabilitarCombo") != null && request.getAttribute("deshabilitarCombo").equals("true")) ? "disabled" : "" %>>
+                                <option disable selected value="">Seleccione un dato</option>
+                                <c:forEach var="servicio" items="${empleados}">
+                                    <option value="${servicio.getCodigoEmpleado()}">${servicio.getCodigoEmpleado()} | ${servicio.getNombresEmpleado()}</option>
+                                </c:forEach>
+                            </select>
+                        </div>   
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                     </form>
                 </div>
             </div>
             <div class="col-sm-8">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <td style="color:#0D0D0D">CÓDIGO</td>
-                        <td style="color:#0D0D0D">FECHA</td>
-                        <td style="color:#0D0D0D">TIPO</td>
-                        <td style="color:#0D0D0D">HORA</td>
-                        <td style="color:#0D0D0D">LUGAR</td>
-                        <td style="color:#0D0D0D">TELÉFONO</td>
-                        <td style="color:#0D0D0D">CÓDIGO EMPLEADO</td>
-                        <td style="color:#0D0D0D">ACCIONES</td>
-                    </tr>
-                </thead>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <td style="color:#0D0D0D"><strong>CÓDIGO</strong></td>
+                            <td style="color:#0D0D0D"><strong>FECHA</strong></td>
+                            <td style="color:#0D0D0D"><strong>TIPO</strong></td>
+                            <td style="color:#0D0D0D"><strong>HORA</strong></td>
+                            <td style="color:#0D0D0D"><strong>LUGAR</strong></td>
+                            <td style="color:#0D0D0D"><strong>TELÉFONO</strong></td>
+                            <td style="color:#0D0D0D"><strong>CÓDIGO EMPLEADO</strong></td>
+                            <td style="color:#0D0D0D"><strong>ACCIONES</strong></td>
+                        </tr>
+                    </thead>
                 <tbody>
-                        <c:forEach var="servicio" items="${servicio}">
+                        <c:forEach var="servicio" items="${servicios}">
                             <tr>
                                 <td>${servicio.getCodigoServicio()}</td>
                                 <td>${servicio.getFechaServicio()}</td>
@@ -75,15 +78,15 @@
                                 <td>${servicio.getTelefonoServicio()}</td>
                                 <td>${servicio.getCodigoEmpleado()}</td>
                                 <td>
-                                    <a class="btn btn-warning" href="">Editar</a>
-                                    <a class="btn btn-danger" href="">Eliminar</a>
+                                    <a class="btn btn-warning" href="Controlador?menu=Servicios&accion=Editar&codigoServicio=${servicio.getCodigoServicio()}">Editar</a>
+                                    <a class="btn btn-danger" href="Controlador?menu=Servicios&accion=Eliminar&codigoServicio=${servicio.getCodigoServicio()}">Eliminar</a>
                                 </td>
                             </tr>
                         </c:forEach>
                 </tbody>
             </table>
             
-        </div>
+            </div>
         </div>
         
         

@@ -23,7 +23,7 @@ public class ServiciosDAO {
       //METODO LISTAR
    public List listar(){
        String sql = "select * from Servicios";
-       List<Servicios> listaServicios = new ArrayList<Servicios>();
+       List<Servicios> listaServicios = new ArrayList<>();
        try{
            con = cn.Conexion();
            ps = con.prepareStatement(sql);
@@ -48,7 +48,7 @@ public class ServiciosDAO {
    
    //METODO AGREGAR
    public int agregar(Servicios sv){
-       String sql = "insert into Servicios(fechaServicio,tipoServicio,horaServicio,lugarServicio,telefonoServicio,codigoEmpleado) values(?,?,?,?,?,?)";
+       String sql = "insert into Servicios(fechaServicio, tipoServicio, horaServicio, lugarServicio, telefonoServicio, codigoEmpleado) values(?,?,?,?,?,?)";
        try{
            con = cn.Conexion();
            ps = con.prepareStatement(sql);
@@ -90,7 +90,7 @@ public class ServiciosDAO {
   
    //METODO EDITAR
    public int actualizar(Servicios sv){
-       String sql = "update Servicios set fechaServicio = ?, tipoServicio = ?, horaServicio = ?, lugarServicio = ?, telefonoServicio = ?" + "where codigoServicio = ?";
+       String sql = "update Servicios set fechaServicio = ?, tipoServicio = ?, horaServicio = ?, lugarServicio = ?, telefonoServicio = ? where codigoServicio = ?";
        try{
           con = cn.Conexion();
           ps = con.prepareStatement(sql);
@@ -99,6 +99,7 @@ public class ServiciosDAO {
           ps.setString(3, sv.getHoraServicio());
           ps.setString(4, sv.getLugarServicio());
           ps.setString(5, sv.getTelefonoServicio());
+          ps.setInt(6, sv.getCodigoServicio());
           ps.executeUpdate();
        }catch(Exception e){
            e.printStackTrace();
@@ -108,7 +109,7 @@ public class ServiciosDAO {
    
    //METODOD ELIMINAR
    public void eliminar(int id){
-       String sql = "delete from Servicios where codigoServicio =" + id;
+       String sql = "delete from Servicios where codigoServicio = " + id;
        try{
            con = cn.Conexion();
            ps = con.prepareStatement(sql);

@@ -238,10 +238,12 @@ insert into Empleados(codigoEmpleado, DPI, apellidosEmpleado, nombresEmpleado, d
 insert into Servicios(codigoServicio, fechaServicio, tipoServicio, horaServicio, lugarServicio, telefonoServicio, codigoEmpleado)
 	values(1,'2023-03-30','Domicilio','13:00:00','Zona 7 Tikal 1 30-07','28356985',1);
 insert into Servicios(codigoServicio, fechaServicio, tipoServicio, horaServicio, lugarServicio, telefonoServicio, codigoEmpleado)
-	values(2,'2022-04-22','Local','18:00:00','MAJADAS','37181157',1);
+	values(2,'2022-04-22','Domicilio','18:00:00','MAJADAS','37181157',1);
 insert into Servicios(codigoServicio, fechaServicio, tipoServicio, horaServicio, lugarServicio, telefonoServicio, codigoEmpleado)
-	values(3,'2023-03-15','Internacional','08:00:00','Ciudad De Plata','19592474',1);
-
+	values(3,'2023-03-15','Domicilio','08:00:00','Ciudad De Plata','19592474',1);
+insert into Servicios(codigoServicio, fechaServicio, tipoServicio, horaServicio, lugarServicio, telefonoServicio, codigoEmpleado)
+	values(4, '2023-03-27','Domicilio', '14:00:00','Miraflores','42464357',1);
+    
 -- Venta:
 
 insert into Venta(codigoVenta, fechaVenta, descVenta, cantidad, direccionEnvio, codigoServicio)

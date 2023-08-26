@@ -27,19 +27,24 @@
                     <form action="Controlador?menu=Categoria" method="POST">
                         <div class="form-group">
                             <label style="color: #f2f2f2">Nombre Categoria:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${categoriaEncontrada.getNombreCategoria()}" name="txtNombreCategoria" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Descipción:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${categoriaEncontrada.getDescripcion()}"name="txtDescCategoria" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Genero:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${categoriaEncontrada.getGenero()}" name="txtGenero" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label style="color: #f2f2f2">Codigo Producto:</label>
-                            <input type="text" name="" class="form-control">
+                            <label style="color: #f2f2f2">Código Producto</label>
+                           <select name="cmbCodProducto" class="form-control" <%= (request.getAttribute("deshabilitarCombo") != null && request.getAttribute("deshabilitarCombo").equals("true")) ? "disabled" : "" %>>
+                                <option disable selected value="">Seleccione un dato</option>
+                                <c:forEach var="categoria" items="${producto}">
+                                    <option value="${categoria.getCodigoProducto()}">${categoria.getCodigoProducto()} | ${categoria.getMarca()}</option>          
+                                </c:forEach>
+                            </select>
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
@@ -67,8 +72,8 @@
                                 <td>${categoria.getGenero()}</td>
                                 <td>${categoria.getCodigoProducto()}</td>
                                 <td>
-                                    <a class="btn btn-warning" href="">Editar</a>
-                                    <a class="btn btn-danger" href="">Eliminar</a>
+                                    <a class="btn btn-warning" href="Controlador?menu=Categoria&accion=Editar&codigoCategoria=${categoria.getCodigoCategoria()}">Editar</a>
+                                    <a class="btn btn-danger" href="Controlador?menu=Categoria&accion=Eliminar&codigoCategoria=${categoria.getCodigoCategoria()}">Eliminar</a>
                                 </td>
                             </tr>
                         </c:forEach>
