@@ -18,30 +18,26 @@
         <div class="d-flex">
             <div style="background-color:#1E3E59" class="card colo-sm-3">
                 <div style="background-color:#1E3E59" class="card-body">
-                    <form action="Controlador?menu=Cliente" method="POST">
-                        <div class="form-group">
-                            <label style="color: #f2f2f2">DPI:</label>
-                            <input type="text" name="" class="form-control">
-                        </div>
+                    <form action="Controlador?menu=Clientes" method="POST">
                         <div class="form-group">
                             <label style="color: #f2f2f2">Nombre Cliente:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${cliente.getNombresCliente()}" name="txtNombresCliente" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Apellido Cliente:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${cliente.getApellidoCliente()}" name="txtApellidosCliente" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">NIT:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${cliente.getNit()}" name="txtNit" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Estado Activo:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${cliente.getEstadoActivo()}" name="txtEstadoActivo" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Telefono Cliente:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${cliente.getTelefonoCliente()}" name="txtTelefonoCliente" class="form-control">
                         </div>
                         
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
@@ -63,7 +59,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="cliente" items="${cliente}">
+                        <c:forEach var="cliente" items="${clientes}">
                             <tr>
                                 <td>${cliente.getCodigoCliente()}</td>
                                 <td>${cliente.getNombresCliente()}</td>
@@ -72,8 +68,8 @@
                                 <td>${cliente.getEstadoActivo()}</td>
                                 <td>${cliente.getTelefonoCliente()}</td>
                                 <td>
-                                    <a class="btn btn-warning" href="">Editar</a>
-                                    <a class="btn btn-danger" href="">Eliminar</a>
+                                    <a class="btn btn-warning" href="Controlador?menu=Clientes&accion=Editar&codigoCliente=${cliente.getCodigoCliente()}">Editar</a>
+                                    <a class="btn btn-danger" href="Controlador?menu=Clientes&accion=Eliminar&codigoCliente=${cliente.getCodigoCliente()}">Eliminar</a>
                                 </td>
                             </tr>
                         </c:forEach>

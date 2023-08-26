@@ -14,28 +14,7 @@ public class CategoriaDAO {
     ResultSet rs;
     int resp;                                            
 
-    // Método para validar una categoría por nombre y código de producto
-    public Categoria validarCategoria(String nombreCategoria, int codigoProducto) {
-        Categoria categoria = new Categoria();
-        String sql = "SELECT * FROM Categoria WHERE nombreCategotia = ? AND codigoProducto = ?";
-        try {
-            con = cn.Conexion();
-            ps = con.prepareStatement(sql);
-            ps.setString(1, nombreCategoria);
-            ps.setInt(2, codigoProducto);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                categoria.setCodigoCategoria(rs.getInt("codigoCategoria"));
-                categoria.setNombreCategoria(rs.getString("nombreCategotia"));
-                categoria.setDescripcion(rs.getString("descCategoria"));
-                categoria.setGenero(rs.getBoolean("genero"));
-                categoria.setCodigoProducto(rs.getInt("codigoProducto"));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return categoria;
-    }
+    
 
     // Método para listar todas las categorías
     public List listar() {
@@ -101,15 +80,14 @@ public class CategoriaDAO {
 
     // Método para actualizar una categoría
     public int actualizarCategoria(Categoria categoria) {
-        String sql = "UPDATE Categoria SET nombreCategotia = ?, descCategoria = ?, genero = ?, codigoProducto = ? WHERE codigoCategoria = ?";
+        String sql = "UPDATE Categoria SET nombreCategotia = ?, descCategoria = ?, genero = ? WHERE codigoCategoria = ?";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setString(1, categoria.getNombreCategoria());
             ps.setString(2, categoria.getDescripcion());
             ps.setBoolean(3, categoria.getGenero());
-            ps.setInt(4, categoria.getCodigoProducto());
-            ps.setInt(5, categoria.getCodigoCategoria());
+            ps.setInt(4, categoria.getCodigoCategoria());
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

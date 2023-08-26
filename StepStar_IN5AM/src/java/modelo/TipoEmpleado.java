@@ -3,15 +3,15 @@ package modelo;
 public class TipoEmpleado {
     private int codigoTipoEmpleado;
     private String descTipoEmpleado;
-    private int sueldo;
-    private int bonificacion;
+    private String sueldo;
+    private String bonificacion;
     private String categoriaEmpleado;
 
     public TipoEmpleado() {
 
     }
 
-    public TipoEmpleado(int codigoTipoEmpleado, String descTipoEmpleado, int sueldo, int bonificacion, String categoriaEmpleado) {
+    public TipoEmpleado(int codigoTipoEmpleado, String descTipoEmpleado, String sueldo, String bonificacion, String categoriaEmpleado) {
         this.codigoTipoEmpleado = codigoTipoEmpleado;
         this.descTipoEmpleado = descTipoEmpleado;
         this.sueldo = sueldo;
@@ -35,19 +35,19 @@ public class TipoEmpleado {
         this.descTipoEmpleado = descTipoEmpleado;
     }
 
-    public int getSueldo() {
+    public String getSueldo() {
         return sueldo;
     }
 
-    public void setSueldo(int sueldo) {
+    public void setSueldo(String sueldo) {
         this.sueldo = sueldo;
     }
 
-    public int getBonificacion() {
+    public String getBonificacion() {
         return bonificacion;
     }
 
-    public void setBonificacion(int bonificacion) {
+    public void setBonificacion(String bonificacion) {
         this.bonificacion = bonificacion;
     }
 
@@ -58,4 +58,7 @@ public class TipoEmpleado {
     public void setCategoriaEmpleado(String categoriaEmpleado) {
         this.categoriaEmpleado = categoriaEmpleado;
     }
+
+   
+   
 }

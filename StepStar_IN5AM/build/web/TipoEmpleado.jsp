@@ -9,6 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <style>
             body{
@@ -26,19 +27,19 @@
                     <form action="Controlador?menu=TipoEmpleado" method="POST">
                         <div class="form-group">
                             <label style="color: #f2f2f2">Descripcion:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${tipoEmpleado.getDescTipoEmpleado()}" name="txtDescTipoEmpleado" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Sueldo:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${tipoEmpleado.getSueldo()}" name="txtSueldo" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Bonificacion:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${tipoEmpleado.getBonificacion()}" name="txtBonificacion" class="form-control">
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Categoria:</label>
-                            <input type="text" name="" class="form-control">
+                            <input type="text" value="${tipoEmpleado.getCategoriaEmpleado()}" name="txtCategoriaEmpleado" class="form-control">
                         </div>                
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
@@ -49,6 +50,7 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
+                            <td style="color:#0D0D0D"><strong>CODIGO TIPO EMPLEADO</strong></td>
                             <td style="color:#0D0D0D"><strong>DESCRIPCION</strong></td>
                             <td style="color:#0D0D0D"><strong>SUELDO</strong></td>
                             <td style="color:#0D0D0D"><strong>BONIFICACION</strong></td>
@@ -57,7 +59,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="tipoEmpleado" items="${tipoEmpleado}">
+                        <c:forEach var="tipoEmpleado" items="${tipoEmpleados}">
                             <tr>
                                 <td>${tipoEmpleado.getCodigoTipoEmpleado()}</td>
                                 <td>${tipoEmpleado.getDescTipoEmpleado()}</td>
@@ -65,8 +67,8 @@
                                 <td>${tipoEmpleado.getBonificacion()}</td>
                                 <td>${tipoEmpleado.getCategoriaEmpleado()}</td>
                                 <td>
-                                    <a class="btn btn-warning" href="">Editar</a>
-                                    <a class="btn btn-danger" href="">Eliminar</a>
+                                    <a class="btn btn-warning" href="Controlador?menu=TipoEmpleado&accion=Editar&codigoTipoEmpleado=${tipoEmpleado.getCodigoTipoEmpleado()}">Editar</a>
+                                    <a class="btn btn-danger" href="Controlador?menu=TipoEmpleado&accion=Eliminar&codigoTipoEmpleado=${tipoEmpleado.getCodigoTipoEmpleado()}">Eliminar</a>
                                 </td>
                             </tr>
                         </c:forEach>
