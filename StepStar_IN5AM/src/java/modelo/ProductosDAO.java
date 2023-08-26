@@ -44,14 +44,14 @@ public class ProductosDAO {
    
    //Metodo Agregar
    public int agregar(Productos pro){
-       String sql = "insert into Productos(nombreProducto, descripcion, marca, precio, talla, cantidad, codigoProveedor, codigoCategoria) values (?,?,?,?,?,?,?,?)";
+       String sql = "insert into Productos(nombreProducto, descProductos, marca, precio, talla, cantidad, codigoProveedor, codigoCategoria) values (?,?,?,?,?,?,?,?)";
        try {
            con = cn.Conexion();
            ps = con.prepareStatement(sql);
            ps.setString(1, pro.getNombreProducto());
            ps.setString(2, pro.getDescripcion());
            ps.setString(3, pro.getMarca());
-           ps.setDouble(3, pro.getPrecio());
+           ps.setDouble(4, pro.getPrecio());
            ps.setInt(5, pro.getTalla());
            ps.setInt(6, pro.getCantidad());
            ps.setInt(7, pro.getCodigoProveedor());
@@ -65,7 +65,7 @@ public class ProductosDAO {
    //Metodo Buscar
        public Productos listarCodigoProductos(int id){
            Productos pro = new Productos();
-           String sql = "Select * from Productos where codigoProducto = " + id;
+           String sql = "select * from Productos where codigoProducto =" + id;
            try {
                con = cn.Conexion();
                ps = con.prepareStatement(sql);
@@ -88,7 +88,7 @@ public class ProductosDAO {
        
        //Metodo Editar
        public int actualizar(Productos pro){
-           String sql = "update Productos set nombreProducto = ?, descripcion = ?, marca = ?, precio = ?, talla = ?, cantidad = ?," + "where codigoProducto = ?";
+           String sql = "update Productos set nombreProducto = ?, descProductos = ?, marca = ?, precio = ?, talla = ?, cantidad = ? where codigoProducto = ?";
            try {
                con = cn.Conexion();
                ps = con.prepareStatement(sql);
@@ -98,6 +98,7 @@ public class ProductosDAO {
                ps.setDouble(4, pro.getPrecio());
                ps.setInt(5, pro.getTalla());
                ps.setInt(6, pro.getCantidad());
+               ps.setInt(7, pro.getCodigoProducto());
                ps.executeUpdate();
            } catch (Exception e) {
                e.printStackTrace();
@@ -107,7 +108,7 @@ public class ProductosDAO {
        
        //Metodo Eliminar
        public void eliminar(int id){
-           String sql = "delete from Productos where codigoProductos =" + id;
+           String sql = "delete from Productos where codigoProducto =" + id;
            try {
                con = cn.Conexion();
                ps = con.prepareStatement(sql);

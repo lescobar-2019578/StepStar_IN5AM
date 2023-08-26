@@ -19,7 +19,7 @@ public class VentasDAO {
    //Método Listar
    public List listar(){
        String sql = "select * from Venta";
-       List<Ventas> listaVentas = new ArrayList<Ventas>();
+       List<Ventas> listaVentas = new ArrayList<>();
        try{
            con = cn.Conexion();
            ps = con.prepareStatement(sql);
@@ -32,6 +32,7 @@ public class VentasDAO {
                ven.setCantidad(rs.getInt(4));
                ven.setDireccionEnvio(rs.getString(5));
                ven.setCodigoServicio(rs.getInt(6));
+               listaVentas.add(ven);
            }
        }catch(Exception e){
            e.printStackTrace();
@@ -40,8 +41,8 @@ public class VentasDAO {
    }
    
    //Método Agregar
-   public int agregar(Ventas ven) throws SQLException{
-       String sql = "insert into Venta(fechaVenta, descripcion, cantidad, direccionEnvio, codigoServicio)\n" +
+   public int agregar(Ventas ven){
+       String sql = "insert into Venta(fechaVenta, descVenta, cantidad, direccionEnvio, codigoServicio)\n" +
 "	values (?, ?, ?, ?, ?);";
        try{
           con = cn.Conexion();
@@ -81,7 +82,7 @@ public class VentasDAO {
    
    //Método Editar
    public int actualizar(Ventas ven){
-       String sql = "update Ventas set fechaVenta = ?, descripcion = ?, cantidad = ?, direccionEnvio = ?" + "where codigoServicio = ?";
+       String sql = "update Venta set fechaVenta = ?, descVenta = ?, cantidad = ?, direccionEnvio = ? where codigoVenta = ?";
        try{
            con = cn.Conexion();
            ps = con.prepareStatement(sql);
@@ -89,6 +90,8 @@ public class VentasDAO {
            ps.setString(2, ven.getDescripcion());
            ps.setInt(3, ven.getCantidad());
            ps.setString(4, ven.getDireccionEnvio());
+           ps.setInt(5, ven.getCodigoVenta());
+           ps.executeUpdate();
        }catch(Exception e){
            e.printStackTrace();
        }

@@ -5,18 +5,18 @@ public class Cliente {
     private int codigoCliente;
     private String nombresCliente;
     private String apellidoCliente;
-    private String nit;
+    private String NIT;
     private String estadoActivo;
     private String telefonoCliente;
 
     public Cliente() {
     }
 
-    public Cliente(int codigoCliente, String nombresCliente, String apellidoCliente, String nit, String estadoActivo, String telefonoCliente) {
+    public Cliente(int codigoCliente, String nombresCliente, String apellidoCliente, String NIT, String estadoActivo, String telefonoCliente) {
         this.codigoCliente = codigoCliente;
         this.nombresCliente = nombresCliente;
         this.apellidoCliente = apellidoCliente;
-        this.nit = nit;
+        this.NIT = NIT;
         this.estadoActivo = estadoActivo;
         this.telefonoCliente = telefonoCliente;
     }
@@ -46,11 +46,11 @@ public class Cliente {
     }
 
     public String getNit() {
-        return nit;
+        return NIT;
     }
 
-    public void setNit(String nit) {
-        this.nit = nit;
+    public void setNit(String NIT) {
+        this.NIT = NIT;
     }
 
     public String getEstadoActivo() {
