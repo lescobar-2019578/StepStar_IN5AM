@@ -130,6 +130,7 @@ public class Controlador extends HttpServlet {
                         codEmpleado =  Integer.parseInt(request.getParameter("codigoEmpleado"));
                         Empleados e = empleadoDao.listarCodigoEmpleados(codEmpleado);
                         request.setAttribute("empleadoEncontrado", e);
+                        request.setAttribute("deshabilitarCombo", "true");
                         request.getRequestDispatcher("Controlador?menu=Empleados&accion=Listar").forward(request, response);
                         break;
                     case "Actualizar":
@@ -138,13 +139,13 @@ public class Controlador extends HttpServlet {
                         String nombresEmp = request.getParameter("txtNombreEmpleado");
                         String direccionEmp = request.getParameter("txtDireccionEmpleado");
                         String telefonoEmp = request.getParameter("txtTelefonoEmpleado");
-                        int codigoTipoEmpleadoEmp = Integer.parseInt(request.getParameter("cmbCodigoTipoEmpleado"));
+                        
                         empleado.setDPI(DPIEmp);
                         empleado.setApellidosEmpleado(apellidosEmp);
                         empleado.setNombresEmpleado(nombresEmp);
                         empleado.setDireccionEmpleado(direccionEmp);
                         empleado.setTelefonoContacto(telefonoEmp);
-                        empleado.setCodigoTipoEmpleado(codigoTipoEmpleadoEmp);
+                        
                         empleado.setCodigoEmpleado(codEmpleado);
                         empleadoDao.actualizar(empleado);
                         request.getRequestDispatcher("Controlador?menu=Empleados&accion=Listar").forward(request, response);
