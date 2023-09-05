@@ -40,21 +40,6 @@ Create table Cliente(
 );
 
 
-Create table Usuario(
-	codigoUsuario int not null auto_increment,
-    nombreUsuario varchar (100) not null,
-    apellidoUsuario varchar (100) not null,
-    usuarioLogin varchar (50) not null,
-    contrasena varchar (50) not null,
-    primary key PK_CodigoUsuario (codigoUsuario)
-);
-
-Create table login(
-	usuario varchar (50),
-    passwordLogin varchar (50),
-    primary key PK_usuarioMaster (usuario)
-);
-
 Create Table Categoria(
 	codigoCategoria int not null auto_increment,
     nombreCategotia varchar(150) not null,
@@ -98,6 +83,7 @@ Create table Empleados(
     nombresEmpleado varchar (150) not null,
     direccionEmpleado varchar (150) not null,
     telefonoContacto varchar (15) not null,
+    foto longblob,
     codigoTipoEmpleado int not null,
     primary key PK_codigoEmpleado (codigoEmpleado),
     constraint FK_Empleados_TipoEmpleado foreign key
@@ -166,14 +152,6 @@ Create table DetalleVenta(
 	constraint FK_DetalleVenta_Productos foreign key
 		(codigoProducto) references Productos (codigoProducto)
 );
-
--- Usuario
-insert into Usuario(codigoUsuario, nombreUsuario, apellidoUsuario, usuarioLogin, contrasena)
-	values(1,'Diego','Zabala','dzabala','123');
-insert into Usuario(codigoUsuario, nombreUsuario, apellidoUsuario, usuarioLogin, contrasena)
-	values(2,'Axel','Xitumul','Axitu','3609');
-insert into Usuario(codigoUsuario, nombreUsuario, apellidoUsuario, usuarioLogin, contrasena)
-	values(3,'Llanel','Escobar','Lescobar','321');
 
 -- TipoEmpleado:
 

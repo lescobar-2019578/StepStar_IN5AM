@@ -65,7 +65,7 @@
             </button>
             <div class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="dropdawnMenuButton"> 
                 <a class="dropdown-item" href="#"></a>
-                    <img src="img/imagen.png" alt="60" width="60"/>
+                    <img src="ControladorImg?codigoEmpleado=${usuario.getCodigoEmpleado()}" width="60" height="60">
                 <a class="dropdown-item" href="#">${usuario.getNombresEmpleado()}</a>
                 <a class="dropdown-item" href="#">${usuario.getNombresEmpleado()}@gmail.com</a>
                     <div class="dropdown-divider"></div>

@@ -25,7 +25,7 @@
         <div class="d-flex">
             <div style="background-color:#1E3E59" class="card colo-sm-4">
                 <div style="background-color:#1E3E59" class="card-body">
-                    <form action="Controlador?menu=Empleados" method="POST">
+                    <form action="Controlador?menu=Empleados" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label style="color: #f2f2f2">DPI:</label>
                             <input type="text" value="${empleadoEncontrado.getDPI()}" name="txtDPIEmpleado" class="form-control">
@@ -47,8 +47,12 @@
                             <input type="text" value="${empleadoEncontrado.getTelefonoContacto()}" name="txtTelefonoEmpleado" class="form-control">
                         </div>
                         <div class="form-group">
+                            <label style="color: #f2f2f2">Foto:</label>
+                            <input type="file" value="${empleadoEncontrado.getFoto()}" name="fileFoto" class="form-control">
+                        </div>
+                        <div class="form-group">
                             <label style="color: #f2f2f2">Código TipoEmpleado:</label>
-                            <select name="cmbCodigoTipoEmpleado" class="form-control">
+                            <select name="cmbCodigoTipoEmpleado" class="form-control" <%= (request.getAttribute("deshabilitarCombo") != null && request.getAttribute("deshabilitarCombo").equals("true")) ? "disabled" : "" %>>
                                 <option disable selected value="">Seleccione un dato</option>
                                 <c:forEach var="empleado" items="${tipoEmpleado}">
                                     <option value="${empleado.getCodigoTipoEmpleado()}">${empleado.getCodigoTipoEmpleado()} | ${empleado.getCategoriaEmpleado()}</option>
@@ -71,6 +75,7 @@
                             <td style="color:#0D0D0D"><strong>NOMBRES</strong></td>
                             <td style="color:#0D0D0D"><strong>DIRECCION</strong></td>
                             <td style="color:#0D0D0D"><strong>TELEFONO</strong></td>
+                            <td style="color:#0D0D0D"><strong>FOTO</strong></td>
                             <td style="color:#0D0D0D"><strong>CODIGO TIPOEMPLEADO</strong></td>
                             
                         </tr>
@@ -84,6 +89,7 @@
                                 <td>${empleado.getNombresEmpleado()}</td>
                                 <td>${empleado.getDireccionEmpleado()}</td>
                                 <td>${empleado.getTelefonoContacto()}</td>
+                                <td><img src="ControladorImg?codigoEmpleado=${empleado.getCodigoEmpleado()}" width="150" height="130"></td>
                                 <td>${empleado.getCodigoTipoEmpleado()}</td>
                                 <td>
                                     <a class="btn btn-warning" href="Controlador?menu=Empleados&accion=Editar&codigoEmpleado=${empleado.getCodigoEmpleado()}">Editar</a>

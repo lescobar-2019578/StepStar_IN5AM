@@ -2,11 +2,17 @@
 package modelo;
 
 import config.Conexion;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.http.HttpServletResponse;
+import org.jboss.weld.context.http.Http;
 
 
 public class EmpleadosDAO {
@@ -58,7 +64,8 @@ public class EmpleadosDAO {
                em.setNombresEmpleado(rs.getString(4));
                em.setDireccionEmpleado(rs.getString(5));
                em.setTelefonoContacto(rs.getString(6));
-               em.setCodigoTipoEmpleado(rs.getInt(7));
+               em.setFoto(rs.getBinaryStream(7));
+               em.setCodigoTipoEmpleado(rs.getInt(8));
                listaEmpleados.add(em);
            }
        }catch(Exception e){
@@ -68,9 +75,36 @@ public class EmpleadosDAO {
        return listaEmpleados;
    }
    
+   public void listarImg(int codigoEmpleado, HttpServletResponse response){
+       String sql = "select * from Empleados where codigoEmpleado ="+ codigoEmpleado;
+       InputStream inputStream = null;
+       OutputStream outputStream = null;
+       BufferedInputStream bufferedInputStream = null;
+       BufferedOutputStream bufferedOutputStream = null;
+       response.setContentType("image/*");
+       try {
+           outputStream = response.getOutputStream();
+           con= cn.Conexion();
+           ps = con.prepareStatement(sql);
+           rs = ps.executeQuery();
+           if(rs.next()){
+               inputStream = rs.getBinaryStream("foto");
+           }
+           bufferedInputStream = new BufferedInputStream(inputStream);
+           bufferedOutputStream = new BufferedOutputStream(outputStream);
+           int i = 0;
+           while((i=bufferedInputStream.read())!=-1){
+               bufferedOutputStream.write(i);
+               
+           }
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
+   }
+   
    //METODO AGREGAR
    public int agregar(Empleados em){
-       String sql = "insert into Empleados( DPI, apellidosEmpleado, nombresEmpleado, direccionEmpleado, telefonoContacto, codigoTipoEmpleado) values(?,?,?,?,?,?)";
+       String sql = "insert into Empleados( DPI, apellidosEmpleado, nombresEmpleado, direccionEmpleado, telefonoContacto, foto, codigoTipoEmpleado) values(?,?,?,?,?,?,?)";
        try{
            con = cn.Conexion();
            ps = con.prepareStatement(sql);
@@ -80,7 +114,8 @@ public class EmpleadosDAO {
            ps.setString(3, em.getNombresEmpleado());
            ps.setString(4, em.getDireccionEmpleado());
            ps.setString(5, em.getTelefonoContacto());
-           ps.setInt(6, em.getCodigoTipoEmpleado());
+           ps.setBlob(6, em.getFoto());
+           ps.setInt(7, em.getCodigoTipoEmpleado());
            ps.executeUpdate();
        } catch (Exception e) {
            e.printStackTrace();
@@ -114,7 +149,7 @@ public class EmpleadosDAO {
   
    //METODO EDITAR
    public int actualizar(Empleados em){
-       String sql = "update Empleados set DPI = ?, apellidosEmpleado = ?, nombresEmpleado = ?, direccionEmpleado = ?, telefonoContacto = ? where codigoEmpleado = ?";
+       String sql = "update Empleados set DPI = ?, apellidosEmpleado = ?, nombresEmpleado = ?, direccionEmpleado = ?, telefonoContacto = ?, foto = ? where codigoEmpleado = ?";
        try{
           con = cn.Conexion();
           ps = con.prepareStatement(sql);
@@ -123,7 +158,8 @@ public class EmpleadosDAO {
           ps.setString(3, em.getNombresEmpleado());
           ps.setString(4, em.getDireccionEmpleado());
           ps.setString(5, em.getTelefonoContacto());
-          ps.setInt(6, em.getCodigoEmpleado());
+          ps.setBlob(6, em.getFoto());
+          ps.setInt(7, em.getCodigoEmpleado());
           ps.executeUpdate();
        }catch(Exception e){
            e.printStackTrace();

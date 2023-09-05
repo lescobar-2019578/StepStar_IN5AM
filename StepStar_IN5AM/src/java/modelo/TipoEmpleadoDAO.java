@@ -12,68 +12,47 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author lisan
- */
 public class TipoEmpleadoDAO {
     Conexion cn = new Conexion();
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
     int resp;
-
-    // Método Agregar
-    public int agregar(TipoEmpleado tipoEmpleado) {
-        String sql = "INSERT INTO TipoEmpleado (descTipoEmpleado, sueldo, bonificacion, categoriaEmpleado) VALUES (?, ?, ?, ?)";
-        try {
-            con = cn.Conexion();
-            ps = con.prepareStatement(sql);
-            ps.setString(1, tipoEmpleado.getDescTipoEmpleado());
-            ps.setInt(2, tipoEmpleado.getSueldo());
-            ps.setInt(3, tipoEmpleado.getBonificacion());
-            ps.setString(4, tipoEmpleado.getCategoriaEmpleado());
-            ps.executeUpdate();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return resp;
-    }
-
+    
     // Método Listar
     public List listar() {
         String sql = "SELECT * FROM TipoEmpleado";
-        List<TipoEmpleado> listaTipoEmpleado = new ArrayList<TipoEmpleado>();
+        List<TipoEmpleado> listaTipoEmpleado = new ArrayList<>();
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                TipoEmpleado tipoEmpleado = new TipoEmpleado();
-                tipoEmpleado.setCodigoTipoEmpleado(rs.getInt("codigoTipoEmpleado"));
-                tipoEmpleado.setDescTipoEmpleado(rs.getString("descTipoEmpleado"));
-                tipoEmpleado.setSueldo(rs.getInt("sueldo"));
-                tipoEmpleado.setBonificacion(rs.getInt("bonificacion"));
-                tipoEmpleado.setCategoriaEmpleado(rs.getString("categoriaEmpleado"));
-                listaTipoEmpleado.add(tipoEmpleado);
+                TipoEmpleado TiEm = new TipoEmpleado();
+                TiEm.setCodigoTipoEmpleado(rs.getInt(1));
+                TiEm.setDescTipoEmpleado(rs.getString(2));
+                TiEm.setSueldo(rs.getString(3));
+                TiEm.setBonificacion(rs.getString(4));
+                TiEm.setCategoriaEmpleado(rs.getString(5));
+                listaTipoEmpleado.add(TiEm);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return listaTipoEmpleado;
     }
-
-    // Método Editar
-    public int actualizar(TipoEmpleado tipoEmpleado) {
-        String sql = "UPDATE TipoEmpleado SET descTipoEmpleado = ?, sueldo = ?, bonificacion = ?, categoriaEmpleado = ? WHERE codigoTipoEmpleado = ?";
+    
+    
+    // Método Agregar
+    public int agregar(TipoEmpleado TiEm) {
+        String sql = "INSERT INTO TipoEmpleado (descTipoEmpleado, sueldo, bonificacion, categoriaEmpleado) VALUES (?, ?, ?, ?)";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.setString(1, tipoEmpleado.getDescTipoEmpleado());
-            ps.setInt(2, tipoEmpleado.getSueldo());
-            ps.setInt(3, tipoEmpleado.getBonificacion());
-            ps.setString(4, tipoEmpleado.getCategoriaEmpleado());
-            ps.setInt(5, tipoEmpleado.getCodigoTipoEmpleado());
+            ps.setString(1, TiEm.getDescTipoEmpleado());
+            ps.setString(2, TiEm.getSueldo());
+            ps.setString(3, TiEm.getBonificacion());
+            ps.setString(4, TiEm.getCategoriaEmpleado());
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -81,38 +60,55 @@ public class TipoEmpleadoDAO {
         return resp;
     }
 
-    // Método Eliminar
-    public void eliminar(int id) {
-        String sql = "DELETE FROM TipoEmpleado WHERE codigoTipoEmpleado = ?";
+    
+    // Método Editar
+    public int actualizar(TipoEmpleado TiEm) {
+        String sql = "UPDATE TipoEmpleado SET descTipoEmpleado = ?,sueldo = ?,bonificacion = ?,categoriaEmpleado = ? WHERE codigoTipoEmpleado = ?";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.setInt(1, id);
+            ps.setString(1, TiEm.getDescTipoEmpleado());
+            ps.setString(2, TiEm.getSueldo());
+            ps.setString(3, TiEm.getBonificacion());
+            ps.setString(4, TiEm.getCategoriaEmpleado());
+            ps.setInt(5,    TiEm.getCodigoTipoEmpleado());
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return resp;
     }
 
     // Buscar por código de tipo de empleado
     public TipoEmpleado listarCodigoTipoEmpleado(int id) {
-        TipoEmpleado tipoEmpleado = new TipoEmpleado();
-        String sql = "SELECT * FROM TipoEmpleado WHERE codigoTipoEmpleado = ?";
+        TipoEmpleado TiEm = new TipoEmpleado();
+        String sql = "SELECT * FROM TipoEmpleado WHERE codigoTipoEmpleado = "+id;
         try {
             con = cn.Conexion();
             ps = con.prepareCall(sql);
-            ps.setInt(1, id);
             rs = ps.executeQuery();
             while (rs.next()) {
-                tipoEmpleado.setCodigoTipoEmpleado(rs.getInt("codigoTipoEmpleado"));
-                tipoEmpleado.setDescTipoEmpleado(rs.getString("descTipoEmpleado"));
-                tipoEmpleado.setSueldo(rs.getInt("sueldo"));
-                tipoEmpleado.setBonificacion(rs.getInt("bonificacion"));
-                tipoEmpleado.setCategoriaEmpleado(rs.getString("categoriaEmpleado"));
+                TiEm.setDescTipoEmpleado(rs.getString(2));
+                TiEm.setSueldo(rs.getString(3));
+                TiEm.setBonificacion(rs.getString(4));
+                TiEm.setCategoriaEmpleado(rs.getString(5));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return tipoEmpleado;
+        return TiEm;
+    }
+    
+     // Método Eliminar
+    public void eliminar(int id) {
+        String sql = "DELETE FROM TipoEmpleado WHERE codigoTipoEmpleado ="+ id;
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+//            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
