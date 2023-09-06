@@ -46,7 +46,7 @@
                     <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Ventas&accion=Listar" target="myFrame">Venta</a>
                 </li>
                 <li class="nav-item" style="padding-top: 28px;">
-                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Compras&accion=Listar" target="myFrame">Compra</a>
+                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Compra&accion=Listar" target="myFrame">Compra</a>
                 </li>
                 <li class="nav-item" style="padding-top: 28px;">
                     <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=DetalleCompra&accion=Listar" target="myFrame">Detalle Compra</a>
@@ -65,7 +65,7 @@
             </button>
             <div class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="dropdawnMenuButton"> 
                 <a class="dropdown-item" href="#"></a>
-                    <img src="img/imagen.png" alt="60" width="60"/>
+                    <img src="ControladorImg?codigoEmpleado=${usuario.getCodigoEmpleado()}" width="60" height="60">
                 <a class="dropdown-item" href="#">${usuario.getNombresEmpleado()}</a>
                 <a class="dropdown-item" href="#">${usuario.getNombresEmpleado()}@gmail.com</a>
                     <div class="dropdown-divider"></div>
