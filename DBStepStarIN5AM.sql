@@ -40,21 +40,6 @@ Create table Cliente(
 );
 
 
-Create table Usuario(
-	codigoUsuario int not null auto_increment,
-    nombreUsuario varchar (100) not null,
-    apellidoUsuario varchar (100) not null,
-    usuarioLogin varchar (50) not null,
-    contrasena varchar (50) not null,
-    primary key PK_CodigoUsuario (codigoUsuario)
-);
-
-Create table login(
-	usuario varchar (50),
-    passwordLogin varchar (50),
-    primary key PK_usuarioMaster (usuario)
-);
-
 Create Table Categoria(
 	codigoCategoria int not null auto_increment,
     nombreCategotia varchar(150) not null,
@@ -98,6 +83,8 @@ Create table Empleados(
     nombresEmpleado varchar (150) not null,
     direccionEmpleado varchar (150) not null,
     telefonoContacto varchar (15) not null,
+    usuario varchar(50) not null,
+    foto longblob,
     codigoTipoEmpleado int not null,
     primary key PK_codigoEmpleado (codigoEmpleado),
     constraint FK_Empleados_TipoEmpleado foreign key
@@ -167,14 +154,6 @@ Create table DetalleVenta(
 		(codigoProducto) references Productos (codigoProducto)
 );
 
--- Usuario
-insert into Usuario(codigoUsuario, nombreUsuario, apellidoUsuario, usuarioLogin, contrasena)
-	values(1,'Diego','Zabala','dzabala','123');
-insert into Usuario(codigoUsuario, nombreUsuario, apellidoUsuario, usuarioLogin, contrasena)
-	values(2,'Axel','Xitumul','Axitu','3609');
-insert into Usuario(codigoUsuario, nombreUsuario, apellidoUsuario, usuarioLogin, contrasena)
-	values(3,'Llanel','Escobar','Lescobar','321');
-
 -- TipoEmpleado:
 
 insert into TipoEmpleado(codigoTipoEmpleado, descTipoEmpleado, sueldo, bonificacion, categoriaEmpleado)
@@ -224,14 +203,8 @@ insert into Productos(codigoProducto, nombreProducto, descProductos, marca, prec
     
 -- Empleados:
 
-insert into Empleados(codigoEmpleado, DPI, apellidosEmpleado, nombresEmpleado, direccionEmpleado, telefonoContacto, codigoTipoEmpleado)
-    values(1,'123456789123' ,'Garcia','Carlos','Zona 7, Tikal 1 30-07', '24741959',1);
-insert into Empleados(codigoEmpleado,  DPI, apellidosEmpleado, nombresEmpleado, direccionEmpleado, telefonoContacto, codigoTipoEmpleado)
-    values(2,'358812220101' ,'Perez','Jose', 'Zona 1, Mixco', '36589632', 3);
-insert into Empleados(codigoEmpleado,  DPI, apellidosEmpleado, nombresEmpleado, direccionEmpleado, telefonoContacto, codigoTipoEmpleado)
-    values(3, '654622430101','Litera','Sandra','Ciudad De Plata ', '42464357',2);
-insert into Empleados(codigoEmpleado, DPI, apellidosEmpleado, nombresEmpleado, direccionEmpleado, telefonoContacto, codigoTipoEmpleado)
-	values(4, '12241252','Zabala','Diego','Zona 7 Tikal 1 30-07','42464357',2);
+insert into Empleados(codigoEmpleado, DPI, apellidosEmpleado, nombresEmpleado, direccionEmpleado, telefonoContacto, usuario,codigoTipoEmpleado)
+    values(1,'123456789123' ,'Garcia','Carlos','Zona 7, Tikal 1 30-07', '24741959','cgarcia',1);
  
 -- Servicios:
 

@@ -88,19 +88,39 @@
            <section class="contenedor" id="expertos">
                <h2 class="subtitulo">Algunas Marcas</h2>
                <section class="experts">
-                   <div class="cont-experts">
-                       <img src="img/adidas.png">
-                       <h3 class="n-expert">Adidas</h3>
+                   <div class="card">
+                   <div class="face front">
+                    <img src="img/adidas1.png" alt="">
                    </div>
-                   <div class="cont-experts">
-                       <img src="img/nike.png">
-                       <h3 class="n-expert">Nike</h3>
+                       <div class="face back">                           
+                            <h3>ADIDAS</h3>
+                            <p>Adidas es otra importante empresa multinacional de ropa deportiva, calzado y accesorios deportivos, Adidas es una de las marcas deportivas más reconocidas y emblemáticas a nivel mundial.</p>
+                         <div class="link">
+                        </div>
+                        </div>
                    </div>
-                   <div class="cont-experts">
-                       <img src="img/converse.png">
-                       <h3 class="n-expert">Converse</h3>
+                   <div class="card">
+                       <div class="face front">
+                           <img src="img/converse2.avif" alt="">
+                       </div>
+                       <div class="face back">
+                           <h3>CONVERSE</h3>
+                           <p>Converse es una marca de calzado y ropa estadounidense conocida principalmente por sus zapatillas deportivas icónicas y su diseño distintivo</p>
+                           <div class="link">                               
+                           </div>
+                       </div>
                    </div>
-                   
+                   <div class="card">
+                       <div class="face front">
+                           <img src="img/jordan4.png" alt="">
+                       </div>
+                       <div class="face back">
+                           <h3>JORDAN</h3>
+                           <p>Jordan es una línea de productos deportivos y de estilo de vida de la marca Nike, Inc. Esta línea lleva el nombre del famoso exjugador de baloncesto Michael Jordan</p>
+                           <div class="link">
+                           </div>
+                       </div>
+                   </div>
                </section>
            </section>
         </main>

@@ -7,13 +7,15 @@ package controlador;
 
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.InputStream;
 import java.sql.Date;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import modelo.Categoria;
 import modelo.CategoriaDAO;
 import modelo.Cliente;
@@ -36,6 +38,8 @@ import modelo.TipoEmpleado;
 import modelo.TipoEmpleadoDAO;
 import modelo.Ventas;
 import modelo.VentasDAO;
+
+@MultipartConfig
 
 /**
  *
@@ -168,12 +172,17 @@ public class Controlador extends HttpServlet {
                         String nombres = request.getParameter("txtNombreEmpleado");
                         String direccion = request.getParameter("txtDireccionEmpleado");
                         String telefono = request.getParameter("txtTelefonoEmpleado");
+                        String usuario = request.getParameter("txtUsuario");
+                        Part part = request.getPart("fileFoto");
+                        InputStream inputStream = part.getInputStream();
                         int codigoTipoEmpleado = Integer.parseInt(request.getParameter("cmbCodigoTipoEmpleado"));
                         empleado.setDPI(DPI);
                         empleado.setApellidosEmpleado(apellidos);
                         empleado.setNombresEmpleado(nombres);
                         empleado.setDireccionEmpleado(direccion);
                         empleado.setTelefonoContacto(telefono);
+                        empleado.setUsuario(usuario);
+                        empleado.setFoto(inputStream);
                         empleado.setCodigoTipoEmpleado(codigoTipoEmpleado);
                         empleadoDao.agregar(empleado);
                         request.getRequestDispatcher("Controlador?menu=Empleados&accion=Listar").forward(request, response);
@@ -191,11 +200,16 @@ public class Controlador extends HttpServlet {
                         String nombresEmp = request.getParameter("txtNombreEmpleado");
                         String direccionEmp = request.getParameter("txtDireccionEmpleado");
                         String telefonoEmp = request.getParameter("txtTelefonoEmpleado");
+                        String usuarioEmp = request.getParameter("txtUsuario");
+                        part = request.getPart("fileFoto");
+                        inputStream = part.getInputStream();
                         empleado.setDPI(DPIEmp);
                         empleado.setApellidosEmpleado(apellidosEmp);
                         empleado.setNombresEmpleado(nombresEmp);
                         empleado.setDireccionEmpleado(direccionEmp);
                         empleado.setTelefonoContacto(telefonoEmp);
+                        empleado.setUsuario(usuarioEmp);
+                        empleado.setFoto(inputStream);
                         empleado.setCodigoEmpleado(codEmpleado);
                         empleadoDao.actualizar(empleado);
                         request.getRequestDispatcher("Controlador?menu=Empleados&accion=Listar").forward(request, response);
@@ -412,6 +426,7 @@ public class Controlador extends HttpServlet {
                     codVentas = Integer.parseInt(request.getParameter("codigoVenta"));
                     Ventas v = ventasDao.listarCodigoVentas(codVentas);
                     request.setAttribute("ventaEncontrada", v);
+                    request.setAttribute("deshabilitarCombo", "true");
                     request.getRequestDispatcher("Controlador?menu=Ventas&accion=Listar").forward(request, response);
                     break;
 
