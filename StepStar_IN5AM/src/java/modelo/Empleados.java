@@ -1,5 +1,7 @@
 package modelo;
 
+import java.io.InputStream;
+
 
 public class Empleados {
     private int codigoEmpleado;
@@ -8,19 +10,21 @@ public class Empleados {
     private String nombresEmpleado;
     private String direccionEmpleado;
     private String telefonoContacto;
+    private InputStream foto;
     private int codigoTipoEmpleado;
     private String usuario;
 
     public Empleados() {
     }
 
-    public Empleados(int codigoEmpleado, String DPI, String apellidosEmpleado, String nombresEmpleado, String direccionEmpleado, String telefonoContacto, int codigoTipoEmpleado, String usuario) {
+    public Empleados(int codigoEmpleado, String DPI, String apellidosEmpleado, String nombresEmpleado, String direccionEmpleado, String telefonoContacto, InputStream foto, int codigoTipoEmpleado, String usuario) {
         this.codigoEmpleado = codigoEmpleado;
         this.DPI = DPI;
         this.apellidosEmpleado = apellidosEmpleado;
         this.nombresEmpleado = nombresEmpleado;
         this.direccionEmpleado = direccionEmpleado;
         this.telefonoContacto = telefonoContacto;
+        this.foto = foto;
         this.codigoTipoEmpleado = codigoTipoEmpleado;
         this.usuario = usuario;
     }
@@ -40,7 +44,6 @@ public class Empleados {
     public void setDPI(String DPI) {
         this.DPI = DPI;
     }
-    
 
     public String getApellidosEmpleado() {
         return apellidosEmpleado;
@@ -74,6 +77,14 @@ public class Empleados {
         this.telefonoContacto = telefonoContacto;
     }
 
+    public InputStream getFoto() {
+        return foto;
+    }
+
+    public void setFoto(InputStream foto) {
+        this.foto = foto;
+    }
+
     public int getCodigoTipoEmpleado() {
         return codigoTipoEmpleado;
     }
@@ -89,6 +100,5 @@ public class Empleados {
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
-    
-    
+
 }
