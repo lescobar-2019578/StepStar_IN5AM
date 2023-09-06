@@ -51,10 +51,6 @@
                             <input type="text" value="${empleadoEncontrado.getUsuario()}" name="txtUsuario" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label style="color: #f2f2f2">Foto:</label>
-                            <input type="file" value="${empleadoEncontrado.getFoto()}" name="fileFoto" class="form-control">
-                        </div>
-                        <div class="form-group">
                             <label style="color: #f2f2f2">Código TipoEmpleado:</label>
                             <select name="cmbCodigoTipoEmpleado" class="form-control" <%= (request.getAttribute("deshabilitarCombo") != null && request.getAttribute("deshabilitarCombo").equals("true")) ? "disabled" : "" %>>
                                 <option disable selected value="">Seleccione un dato</option>
@@ -62,6 +58,10 @@
                                     <option value="${empleado.getCodigoTipoEmpleado()}">${empleado.getCodigoTipoEmpleado()} | ${empleado.getCategoriaEmpleado()}</option>
                                 </c:forEach>
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <label style="color: #f2f2f2">Foto:</label>
+                            <input type="file" value="${empleadoEncontrado.getFoto()}" name="fileFoto">
                         </div>
                         
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
@@ -82,6 +82,7 @@
                             <td style="color:#0D0D0D"><strong>USUARIO</strong></td>
                             <td style="color:#0D0D0D"><strong>FOTO</strong></td>
                             <td style="color:#0D0D0D"><strong>CODIGO TIPOEMPLEADO</strong></td>
+                            <td style="color:#0D0D0D"><strong>ACCIONES</strong></td>
                             
                         </tr>
                     </thead>

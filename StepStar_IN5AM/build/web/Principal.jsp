@@ -67,7 +67,7 @@
                 <a class="dropdown-item" href="#"></a>
                     <img src="ControladorImg?codigoEmpleado=${usuario.getCodigoEmpleado()}" width="60" height="60">
                 <a class="dropdown-item" href="#">${usuario.getNombresEmpleado()}</a>
-                <a class="dropdown-item" href="#">${usuario.getNombresEmpleado()}@gmail.com</a>
+                <a class="dropdown-item" href="#">${usuario.getUsuario()}@gmail.com</a>
                     <div class="dropdown-divider"></div>
                 <form action="Validar" method="POST">
                     <button name="accion" name="Salir" class="dropdown-item"> Salir </button>

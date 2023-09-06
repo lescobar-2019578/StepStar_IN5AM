@@ -43,7 +43,7 @@
                         </div>
                         <div class="form-group">
                             <label style="color: #f2f2f2">Código Servicio</label>
-                            <select name="cmbCodServicio" class="form-control" >
+                            <select name="cmbCodServicio" class="form-control" <%= (request.getAttribute("deshabilitarCombo") != null && request.getAttribute("deshabilitarCombo").equals("true")) ? "disabled" : "" %>>
                                 <option disable selected value="">Seleccione un dato</option>
                                 <c:forEach var="venta" items="${servicio}">
                                     <option value="${venta.getCodigoServicio()}">${venta.getCodigoServicio()} | ${venta.getTipoServicio()}</option>          

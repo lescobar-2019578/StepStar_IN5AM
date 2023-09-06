@@ -8,7 +8,6 @@ package controlador;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -427,6 +426,7 @@ public class Controlador extends HttpServlet {
                     codVentas = Integer.parseInt(request.getParameter("codigoVenta"));
                     Ventas v = ventasDao.listarCodigoVentas(codVentas);
                     request.setAttribute("ventaEncontrada", v);
+                    request.setAttribute("deshabilitarCombo", "true");
                     request.getRequestDispatcher("Controlador?menu=Ventas&accion=Listar").forward(request, response);
                     break;
 
