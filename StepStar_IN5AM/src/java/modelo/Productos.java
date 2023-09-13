@@ -1,5 +1,10 @@
 package modelo;
 
+<<<<<<< HEAD
+=======
+import java.io.InputStream;
+
+>>>>>>> origin/dzabala-2019001
 public class Productos {
     private int codigoProducto;
     private String nombreProducto;
@@ -8,13 +13,21 @@ public class Productos {
     private double precio;
     private int talla;
     private int cantidad;
+<<<<<<< HEAD
+=======
+    private InputStream fotoDeProductos;
+>>>>>>> origin/dzabala-2019001
     private int codigoProveedor;
     private int codigoCategoria;
 
     public Productos() {
     }
 
+<<<<<<< HEAD
     public Productos(int codigoProducto, String nombreProducto, String descripcion, String marca, double precio, int talla, int cantidad, int codigoProveedor, int codigoCategoria) {
+=======
+    public Productos(int codigoProducto, String nombreProducto, String descripcion, String marca, double precio, int talla, int cantidad, InputStream fotoDeProductos, int codigoProveedor, int codigoCategoria) {
+>>>>>>> origin/dzabala-2019001
         this.codigoProducto = codigoProducto;
         this.nombreProducto = nombreProducto;
         this.descripcion = descripcion;
@@ -22,6 +35,10 @@ public class Productos {
         this.precio = precio;
         this.talla = talla;
         this.cantidad = cantidad;
+<<<<<<< HEAD
+=======
+        this.fotoDeProductos = fotoDeProductos;
+>>>>>>> origin/dzabala-2019001
         this.codigoProveedor = codigoProveedor;
         this.codigoCategoria = codigoCategoria;
     }
@@ -82,6 +99,17 @@ public class Productos {
         this.cantidad = cantidad;
     }
 
+<<<<<<< HEAD
+=======
+    public InputStream getFotoDeProductos() {
+        return fotoDeProductos;
+    }
+
+    public void setFotoDeProductos(InputStream fotoDeProductos) {
+        this.fotoDeProductos = fotoDeProductos;
+    }
+
+>>>>>>> origin/dzabala-2019001
     public int getCodigoProveedor() {
         return codigoProveedor;
     }
@@ -97,7 +125,11 @@ public class Productos {
     public void setCodigoCategoria(int codigoCategoria) {
         this.codigoCategoria = codigoCategoria;
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> origin/dzabala-2019001
     
     
 }

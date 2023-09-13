@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/informatica/Downloads/a/a/StepStar_IN5AM/src/java/modelo/Empleados.java</file>
             <file>file:/C:/Users/informatica/Downloads/a/a/StepStar_IN5AM/src/java/controlador/Validar.java</file>
             <file>file:/C:/Users/informatica/Downloads/a/a/StepStar_IN5AM/web/Principal.jsp</file>
@@ -10,6 +11,16 @@
             <file>file:/C:/Users/informatica/Downloads/a/a/StepStar_IN5AM/src/java/controlador/Controlador.java</file>
             <file>file:/C:/Users/informatica/Downloads/a/a/StepStar_IN5AM/src/java/controlador/ControladorImg.java</file>
             <file>file:/C:/Users/informatica/Downloads/a/a/StepStar_IN5AM/web/Empleado.jsp</file>
+=======
+            <file>file:/C:/Users/diego/OneDrive/Documentos/proyecto%20IV/StepStar_IN5AM/web/Inventario.jsp</file>
+            <file>file:/C:/Users/diego/OneDrive/Documentos/proyecto%20IV/StepStar_IN5AM/web/Empleado.jsp</file>
+            <file>file:/C:/Users/diego/OneDrive/Documentos/proyecto%20IV/StepStar_IN5AM/src/java/controlador/Controlador.java</file>
+            <file>file:/C:/Users/diego/OneDrive/Documentos/proyecto%20IV/StepStar_IN5AM/src/java/controlador/ControladorImagen.java</file>
+            <file>file:/C:/Users/diego/OneDrive/Documentos/proyecto%20IV/StepStar_IN5AM/src/java/config/Conexion.java</file>
+            <file>file:/C:/Users/diego/OneDrive/Documentos/proyecto%20IV/StepStar_IN5AM/web/Carrito.jsp</file>
+            <file>file:/C:/Users/diego/OneDrive/Documentos/proyecto%20IV/StepStar_IN5AM/web/Home.jsp</file>
+            <file>file:/C:/Users/diego/OneDrive/Documentos/proyecto%20IV/StepStar_IN5AM/web/Principal.jsp</file>
+>>>>>>> origin/dzabala-2019001
         </group>
     </open-files>
 </project-private>

@@ -67,6 +67,10 @@ Create table Productos(
     precio Decimal(10,2) not null,
     talla int not null,
     cantidad int not null,
+<<<<<<< HEAD
+=======
+    fotoDeProductos longblob,
+>>>>>>> origin/dzabala-2019001
     codigoProveedor int not null,
     codigoCategoria int not null,
     primary key PK_codigoProducto (codigoProducto),
@@ -127,6 +131,11 @@ Create table Compra(
 		(codigoProducto) references Productos (codigoProducto)
 );
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/dzabala-2019001
 Create table DetalleCompra(
 	codigoDetalleCompra int not null auto_increment,
     fechaCom date not null,
@@ -140,6 +149,10 @@ Create table DetalleCompra(
 		(codigoCompra) references Compra (codigoCompra)
 );
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/dzabala-2019001
 Create table DetalleVenta(
 	codigoDetalleVenta int not null auto_increment,
     fechaVen date,
@@ -252,4 +265,11 @@ insert into DetalleVenta(codigoDetalleVenta, fechaVen, cantidadPro, total, codig
 	values(2,'2023-03-20',20,'500.00',2,1);
 insert into DetalleVenta(codigoDetalleVenta, fechaVen, cantidadPro, total, codigoVenta, codigoProducto)
 	values(3,'2023-03-20',20,'500.00',1,3);
+<<<<<<< HEAD
+=======
+    
+    select * from Empleados;
+    
+
+>>>>>>> origin/dzabala-2019001
     

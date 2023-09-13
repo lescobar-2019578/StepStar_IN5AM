@@ -9,6 +9,10 @@ package controlador;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Date;
+<<<<<<< HEAD
+=======
+import java.util.ArrayList;
+>>>>>>> origin/dzabala-2019001
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -16,6 +20,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+<<<<<<< HEAD
+=======
+import modelo.Carrito;
+>>>>>>> origin/dzabala-2019001
 import modelo.Categoria;
 import modelo.CategoriaDAO;
 import modelo.Cliente;
@@ -47,7 +55,17 @@ import modelo.VentasDAO;
  */
 public class Controlador extends HttpServlet {
     Productos productos = new Productos();
+<<<<<<< HEAD
     ProductosDAO productosDao = new ProductosDAO();
+=======
+    List<Productos>productosArray = new ArrayList<>();
+    ProductosDAO productosDao = new ProductosDAO();
+    List<Carrito> listaCarrito = new ArrayList<>(); 
+    int item;
+    int itema;
+    int cantidada=1;
+    double totalPagar =0.0;
+>>>>>>> origin/dzabala-2019001
     int codProducto;
     Empleados empleado = new Empleados();
     EmpleadosDAO empleadoDao = new EmpleadosDAO();
@@ -95,6 +113,10 @@ public class Controlador extends HttpServlet {
             throws ServletException, IOException {
             String menu = request.getParameter("menu");
             String accion = request.getParameter("accion");
+<<<<<<< HEAD
+=======
+            productosArray = productosDao.listar();
+>>>>>>> origin/dzabala-2019001
             if(menu.equals("Principal")){
                 request.getRequestDispatcher("Principal.jsp").forward(request, response);
                 
@@ -155,7 +177,50 @@ public class Controlador extends HttpServlet {
                         codProducto = Integer.parseInt(request.getParameter("codigoProducto"));
                         productosDao.eliminar(codProducto);
                         request.getRequestDispatcher("Controlador?menu=Productos&accion=Listar").forward(request, response);
+<<<<<<< HEAD
                         break;      
+=======
+                        break;
+                    case "AgregarCarrito":
+                        codProducto = Integer.parseInt(request.getParameter("codigoProducto"));
+                        Productos pro = productosDao.listarId(codProducto);
+                        item = item+1;
+                        Carrito car = new Carrito();
+                        car.setItem(item);
+                        car.setIdProducto(pro.getCodigoProducto());
+                        car.setNombres(pro.getNombreProducto());
+                        car.setDescripcion(pro.getDescripcion());
+                        car.setPrecioCompra(pro.getPrecio());
+                        car.setCantidad(cantidada);
+                        car.setSubTotal(cantidada*pro.getPrecio());
+                        listaCarrito.add(car);
+                        request.setAttribute("contador", listaCarrito.size());
+                        request.getRequestDispatcher("Controlador?menu=Productos&accion=Default").forward(request, response);
+                        break;
+                    case "Delete":
+                        int idproducto = Integer.parseInt(request.getParameter("idp"));
+                        for(int i =0; i<listaCarrito.size(); i++){
+                            if(listaCarrito.get(i).getIdProducto()==idproducto){
+                                listaCarrito.remove(i);
+                            }
+                        }
+                        request.setAttribute("listaCarrito", listaCarrito);
+                        request.getRequestDispatcher("Carrito.jsp").forward(request, response);
+                        break;
+                    case "Carrito":
+                        totalPagar =0.0;
+                        request.setAttribute("carrito", listaCarrito);
+                        for (int i = 0; i < listaCarrito.size(); i++){
+                            totalPagar = totalPagar+listaCarrito.get(i).getSubTotal();
+                        }
+                        request.setAttribute("totalPagar", totalPagar);
+                        request.getRequestDispatcher("Carrito.jsp").forward(request, response);
+                        break;
+                    default:
+                        request.setAttribute("productos", productosArray);
+                        request.getRequestDispatcher("Inventario.jsp").forward(request, response);
+                        break;
+>>>>>>> origin/dzabala-2019001
                 }
                 request.getRequestDispatcher("Producto.jsp").forward(request, response);
             }else if(menu.equals("Empleados")){
@@ -640,6 +705,10 @@ public class Controlador extends HttpServlet {
                  request.getRequestDispatcher("Home.jsp").forward(request, response);
             }
     }
+<<<<<<< HEAD
+=======
+    
+>>>>>>> origin/dzabala-2019001
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

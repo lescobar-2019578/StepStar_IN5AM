@@ -4,6 +4,10 @@
     Author     : Antony
 --%>
 
+<<<<<<< HEAD
+=======
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+>>>>>>> origin/dzabala-2019001
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -25,6 +29,12 @@
                     <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Home" target="myFrame">Home</a>
                 </li>
                 <li class="nav-item" style="padding-top: 28px;">
+<<<<<<< HEAD
+=======
+                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Productos&accion=Default" target="myFrame">Inventario</a>
+                </li>
+                <li class="nav-item" style="padding-top: 28px;">
+>>>>>>> origin/dzabala-2019001
                     <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Clientes&accion=Listar" target="myFrame">Clientes</a>
                 </li>
                 <li class="nav-item" style="padding-top: 28px;">
@@ -57,6 +67,12 @@
                 <li class="nav-item" style="padding-top: 28px;">
                     <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=TipoEmpleado&accion=Listar" target="myFrame">Tipo Empleado</a>
                 </li>
+<<<<<<< HEAD
+=======
+                <li class="nav-item" style="padding-top: 28px;">
+                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Productos&accion=Carrito" target="myFrame"><i class="">(<label style="color: yellow">${contador}</label>)</i>Carrito</a>
+                </li>
+>>>>>>> origin/dzabala-2019001
             </ul>
         </div>
         <div class="dropdown" style="margin-right: 20px;">
@@ -76,6 +92,10 @@
         </div>
     </nav>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/dzabala-2019001
             <div class="m-4" style=" height: 640px">
                 <iframe name="myFrame" style="height: 100%; width: 100%; border: none"></iframe>
             </div>
