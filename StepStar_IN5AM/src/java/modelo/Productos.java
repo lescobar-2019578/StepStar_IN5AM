@@ -1,5 +1,7 @@
 package modelo;
 
+import java.io.InputStream;
+
 public class Productos {
     private int codigoProducto;
     private String nombreProducto;
@@ -8,13 +10,14 @@ public class Productos {
     private double precio;
     private int talla;
     private int cantidad;
+    private InputStream fotoDeProductos;
     private int codigoProveedor;
     private int codigoCategoria;
 
     public Productos() {
     }
 
-    public Productos(int codigoProducto, String nombreProducto, String descripcion, String marca, double precio, int talla, int cantidad, int codigoProveedor, int codigoCategoria) {
+    public Productos(int codigoProducto, String nombreProducto, String descripcion, String marca, double precio, int talla, int cantidad, InputStream fotoDeProductos, int codigoProveedor, int codigoCategoria) {
         this.codigoProducto = codigoProducto;
         this.nombreProducto = nombreProducto;
         this.descripcion = descripcion;
@@ -22,6 +25,7 @@ public class Productos {
         this.precio = precio;
         this.talla = talla;
         this.cantidad = cantidad;
+        this.fotoDeProductos = fotoDeProductos;
         this.codigoProveedor = codigoProveedor;
         this.codigoCategoria = codigoCategoria;
     }
@@ -82,6 +86,14 @@ public class Productos {
         this.cantidad = cantidad;
     }
 
+    public InputStream getFotoDeProductos() {
+        return fotoDeProductos;
+    }
+
+    public void setFotoDeProductos(InputStream fotoDeProductos) {
+        this.fotoDeProductos = fotoDeProductos;
+    }
+
     public int getCodigoProveedor() {
         return codigoProveedor;
     }
@@ -97,7 +109,7 @@ public class Productos {
     public void setCodigoCategoria(int codigoCategoria) {
         this.codigoCategoria = codigoCategoria;
     }
-    
+
     
     
 }

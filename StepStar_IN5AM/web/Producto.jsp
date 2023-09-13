@@ -46,6 +46,10 @@
                             <input type="text" value="${productos.getCantidad()}" name="txtCantidad" class="form-control">
                         </div>
                         <div class="form-group">
+                            <label style="color: #f2f2f2">Foto:</label>
+                            <input type="file" value="${productos.getFotoDeProductos()}" name="fileFoto">
+                        </div>
+                        <div class="form-group">
                             <label style="color: #f2f2f2">Codigo Proveedor:</label>
                             <select name="cmbCodProveedor" class="form-control" >
                                 <option disable selected value="">Seleccione un dato</option>
@@ -63,6 +67,7 @@
                                 </c:forEach>
                             </select>
                         </div>
+                        
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                     </form>
@@ -79,6 +84,7 @@
                             <td style="color:#0D0D0D"><strong>PRECIO</strong></td>
                             <td style="color:#0D0D0D"><strong>TALLA</strong></td>
                             <td style="color:#0D0D0D"><strong>CANTIDAD</strong></td>
+                            <td style="color:#0D0D0D"><strong>FOTO</strong></td>
                             <td style="color:#0D0D0D"><strong>PROVEEDOR</strong></td>
                             <td style="color:#0D0D0D"><strong>CATEGORIA</strong></td>
                             <td style="color:#0D0D0D"><strong>ACCIONES</strong></td>
@@ -94,6 +100,7 @@
                                 <td>${producto.getPrecio()}</td>
                                 <td>${producto.getTalla()}</td>
                                 <td>${producto.getCantidad()}</td>
+                                <td><img src="ControladorImagen?id=${producto.getCodigoProducto()}" width="150" height="130"></td>
                                 <td>${producto.getCodigoProveedor()}</td>
                                 <td>${producto.getCodigoCategoria()}</td>
                                 <td>

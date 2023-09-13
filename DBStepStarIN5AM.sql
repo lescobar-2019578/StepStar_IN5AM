@@ -67,6 +67,7 @@ Create table Productos(
     precio Decimal(10,2) not null,
     talla int not null,
     cantidad int not null,
+    fotoDeProductos longblob,
     codigoProveedor int not null,
     codigoCategoria int not null,
     primary key PK_codigoProducto (codigoProducto),
@@ -127,6 +128,8 @@ Create table Compra(
 		(codigoProducto) references Productos (codigoProducto)
 );
 
+
+
 Create table DetalleCompra(
 	codigoDetalleCompra int not null auto_increment,
     fechaCom date not null,
@@ -139,6 +142,7 @@ Create table DetalleCompra(
     constraint FK_DetalleCompra_Compra foreign key
 		(codigoCompra) references Compra (codigoCompra)
 );
+
 
 Create table DetalleVenta(
 	codigoDetalleVenta int not null auto_increment,
@@ -204,13 +208,7 @@ insert into Productos(codigoProducto, nombreProducto, descProductos, marca, prec
 -- Empleados:
 
 insert into Empleados(codigoEmpleado, DPI, apellidosEmpleado, nombresEmpleado, direccionEmpleado, telefonoContacto, usuario,codigoTipoEmpleado)
-    values(1,'12345678' ,'Yaxon','JuanPablo','Zona 7, Tikal 1 30-07', '24741959','jyaxon',1);
-insert into Empleados(codigoEmpleado, DPI, apellidosEmpleado, nombresEmpleado, direccionEmpleado, telefonoContacto, usuario,codigoTipoEmpleado)
-    values(2,'12345678' ,'Xitumul','Axel','Zona 7, Tikal 1 30-07', '24741959','axitumul',2);
-insert into Empleados(codigoEmpleado, DPI, apellidosEmpleado, nombresEmpleado, direccionEmpleado, telefonoContacto, usuario,codigoTipoEmpleado)
-    values(3,'12345678' ,'Escobar','Llanel','Zona 7, Tikal 1 30-07', '24741959','lescobar',1);  
-insert into Empleados(codigoEmpleado, DPI, apellidosEmpleado, nombresEmpleado, direccionEmpleado, telefonoContacto, usuario,codigoTipoEmpleado)
-    values(4,'12345678' ,'Zabala','Diego','Zona 7, Tikal 1 30-07', '24741959','dzabala',2);  
+    values(1,'123456789123' ,'Garcia','Carlos','Zona 7, Tikal 1 30-07', '24741959','cgarcia',1);
  
 -- Servicios:
 
@@ -258,3 +256,8 @@ insert into DetalleVenta(codigoDetalleVenta, fechaVen, cantidadPro, total, codig
 	values(2,'2023-03-20',20,'500.00',2,1);
 insert into DetalleVenta(codigoDetalleVenta, fechaVen, cantidadPro, total, codigoVenta, codigoProducto)
 	values(3,'2023-03-20',20,'500.00',1,3);
+    
+    select * from Empleados;
+    
+
+    

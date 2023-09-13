@@ -4,6 +4,7 @@
     Author     : Antony
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -23,6 +24,9 @@
                 <img src="img/stepstar3.png"  alt="" style="margin-left: 20px; padding-bottom: 10px; height: 100px; width: 110x;">
                 <li class="nav-item" style="padding-top: 28px;">
                     <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Home" target="myFrame">Home</a>
+                </li>
+                <li class="nav-item" style="padding-top: 28px;">
+                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Productos&accion=Default" target="myFrame">Inventario</a>
                 </li>
                 <li class="nav-item" style="padding-top: 28px;">
                     <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Clientes&accion=Listar" target="myFrame">Clientes</a>
@@ -57,6 +61,9 @@
                 <li class="nav-item" style="padding-top: 28px;">
                     <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=TipoEmpleado&accion=Listar" target="myFrame">Tipo Empleado</a>
                 </li>
+                <li class="nav-item" style="padding-top: 28px;">
+                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Productos&accion=Carrito" target="myFrame"><i class="">(<label style="color: yellow">${contador}</label>)</i>Carrito</a>
+                </li>
             </ul>
         </div>
         <div class="dropdown" style="margin-right: 20px;">
@@ -75,6 +82,7 @@
             </div>
         </div>
     </nav>
+
 
             <div class="m-4" style=" height: 640px">
                 <iframe name="myFrame" style="height: 100%; width: 100%; border: none"></iframe>

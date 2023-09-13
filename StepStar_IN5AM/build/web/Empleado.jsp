@@ -82,7 +82,6 @@
                             <td style="color:#0D0D0D"><strong>USUARIO</strong></td>
                             <td style="color:#0D0D0D"><strong>FOTO</strong></td>
                             <td style="color:#0D0D0D"><strong>CODIGO TIPOEMPLEADO</strong></td>
-                            <td style="color:#0D0D0D"><strong>ACCIONES</strong></td>
                             
                         </tr>
                     </thead>
